@@ -73,6 +73,7 @@
     "next-env.d.ts",
     "**/*.ts",
 	"**/*.tsx",
-	"src/pages/_document.js"
+	"src/pages/_document.js",
+	"server"
   ]
 }
