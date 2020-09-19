@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { createStore, applyMiddleware, compose, Store } from 'redux';
+import stepsMiddleware from 'redux-effects-steps';
 import rootReducer, { RootState } from '../modules/reducers';
 
 // eslint-disable-next-line
@@ -18,7 +19,7 @@ function initStore(preloadedState: Partial<RootState>) {
 	return createStore(
 		rootReducer,
 		preloadedState,
-		composeReduxDevToolsEnhancers(applyMiddleware()),
+		composeReduxDevToolsEnhancers(applyMiddleware(stepsMiddleware)),
 	);
 }
 
