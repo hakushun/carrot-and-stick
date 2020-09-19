@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import next from 'next';
 import helmet from 'helmet';
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
