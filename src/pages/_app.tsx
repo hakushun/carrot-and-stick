@@ -4,6 +4,7 @@ import { AppProps } from 'next/app';
 import { useStore } from '../redux/store';
 
 import '../components/stylesheets/reset.scss';
+import '../components/stylesheets/global.scss';
 
 export default function App({
 	Component,
