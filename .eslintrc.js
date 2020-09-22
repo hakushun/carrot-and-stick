@@ -6,14 +6,14 @@ module.exports = {
 		jest: true,
 	},
 	extends: [
-    'airbnb',
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:prettier/recommended',
-    'prettier',
-    'prettier/react',
-    'prettier/@typescript-eslint',
+		'airbnb',
+		'eslint:recommended',
+		'plugin:@typescript-eslint/recommended',
+		'plugin:react/recommended',
+		'plugin:prettier/recommended',
+		'prettier',
+		'prettier/react',
+		'prettier/@typescript-eslint',
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
@@ -25,13 +25,7 @@ module.exports = {
 		project: './tsconfig.json',
 		tsconfigRootDir: __dirname,
 	},
-	plugins: [
-    'import',
-    'react',
-    'prettier',
-    'immutable',
-    '@typescript-eslint',
-  ],
+	plugins: ['import', 'react', 'prettier', 'immutable', '@typescript-eslint'],
 	settings: {
 		react: {
 			version: 'detect',
@@ -84,23 +78,24 @@ module.exports = {
 		'prefer-template': 'off',
 
 		// React
-    'react/display-name': 'off',
-    'react/no-danger': 'error',
-    'react/no-deprecated': 'error',
-    'react/no-did-mount-set-state': 'error',
-    'react/no-did-update-set-state': 'error',
-    'react/no-direct-mutation-state': 'error',
-    'react/no-is-mounted': 'error',
-    'react/no-set-state': 'error',
-    'react/no-string-refs': 'error',
-    'react/prefer-stateless-function': 'error',
-    'react/prop-types': 'off',
-    'react/self-closing-comp': 'off',
-    'react/destructuring-assignment': 'off',
-    'react/jsx-filename-extension': 'off',
+		'react/display-name': 'off',
+		'react/no-danger': 'error',
+		'react/no-deprecated': 'error',
+		'react/no-did-mount-set-state': 'error',
+		'react/no-did-update-set-state': 'error',
+		'react/no-direct-mutation-state': 'error',
+		'react/no-is-mounted': 'error',
+		'react/no-set-state': 'error',
+		'react/no-string-refs': 'error',
+		'react/prefer-stateless-function': 'error',
+		'react/prop-types': 'off',
+		'react/self-closing-comp': 'off',
+		'react/destructuring-assignment': 'off',
+		'react/jsx-filename-extension': 'off',
 
 		// JSX
 		'react/jsx-equals-spacing': 'error',
+		'jsx-a11y/anchor-is-valid': 'off',
 		//"react/jsx-indent": ["error", 2],
 		'react/jsx-key': 'error',
 		'react/jsx-max-props-per-line': [
@@ -124,17 +119,17 @@ module.exports = {
 		// TypeScript
 		'@typescript-eslint/no-explicit-any': 'off',
 
-    // a11y
-    'jsx-a11y/no-static-element-interactions': 'off',
-    'jsx-a11y/control-has-associated-label': 'off',
+		// a11y
+		'jsx-a11y/no-static-element-interactions': 'off',
+		'jsx-a11y/control-has-associated-label': 'off',
 
-    // import
-    'import/no-cycle': 'error',
-    'import/no-unresolved': ['off', { caseSensitive: true }],
-    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
-    'import/prefer-default-export': 'off',
-    'import/no-mutable-exports': 'off',
-    'import/no-dynamic-require': 'off',
-    'import/extensions': 'off',
+		// import
+		'import/no-cycle': 'error',
+		'import/no-unresolved': ['off', { caseSensitive: true }],
+		'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+		'import/prefer-default-export': 'off',
+		'import/no-mutable-exports': 'off',
+		'import/no-dynamic-require': 'off',
+		'import/extensions': 'off',
 	},
 };
