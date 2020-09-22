@@ -1,3 +1,3 @@
-import Home from '../components/Home';
+import Toppage from '../components/Organisms/Toppage';
 
-export default Home;
+export default Toppage;

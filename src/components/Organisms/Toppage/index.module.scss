@@ -1,0 +1,307 @@
+$mainTextColor: #333;
+$subTextColor:  #717171;
+$brandColor: #145374;
+$bgColor: #f6f5f5;
+
+.header {
+	background-color: $brandColor;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 500;
+
+	&__inner {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+		margin: 0 auto;
+		max-width: 1200px;
+		padding: 24px 0;
+		width: 80%;
+	}
+
+	&__title {
+		color: $bgColor;
+		font-size: 2.4rem;
+	}
+}
+
+.nav {
+	&__inner {
+		align-items: center;
+		display: flex;
+		font-size: 1.6rem;
+		justify-content: space-between;
+	}
+
+	&__item {
+		margin: 0 8px;
+	}
+
+	&__link {
+		color: $bgColor;
+	}
+}
+
+.main {
+	background-color: $bgColor;
+	color: $mainTextColor;
+
+	&__inner {
+		margin: 0 auto;
+		max-width: 980px;
+		padding: 72px 16px;
+	}
+}
+
+.mainvisual {
+	background-color: $bgColor;
+	height: 100vh;
+
+	&__inner {
+		margin: 0 auto;
+		max-width: 980px;
+		padding-top: 144px;
+	}
+
+	&__subtilte_wrapper {
+		padding: 24px 0;
+	}
+
+	&__subtitle {
+		font-size: 2rem;
+	}
+
+	&__title_wrapper {
+		padding: 24px 0;
+		text-align: center;
+	}
+
+	&__title {
+		font-size: 3.2rem;
+		font-weight: bold;
+	}
+}
+
+.button {
+	margin-top: 144px;
+	text-align: center;
+
+	&__inner {
+		background-color: #fff;
+		border: none;
+		border-radius: 30px;
+		box-shadow: 0 0 3px #000;
+		cursor: pointer;
+		font-size: 1.8rem;
+		padding: 10px 0;
+		position: relative;
+		transition: all 0.3s ease-in;
+		width: 300px;
+
+		&::after {
+			border: 8px solid transparent;
+			border-top: 10px solid #000;
+			content: "";
+			height: 0;
+			position: absolute;
+			right: 20px;
+			top: 50%;
+			transform: translateY(-50%) rotate(-90deg);
+			transition: all 0.2s;
+			width: 0;
+		}
+
+		&:hover {
+			background-color: #fffff0;
+			opacity: 0.8;
+
+			&::after {
+				right: 10px;
+			}
+		}
+	}
+}
+
+.scroll {
+	margin-top: 72px;
+	text-align: center;
+
+	&__inner {
+		background-color: transparent;
+		border: none;
+		color: $mainTextColor;
+		cursor: pointer;
+		font-size: 1.8rem;
+		outline: none;
+		padding: 10px 0;
+		position: relative;
+	}
+
+	&__arrow {
+		animation: sdb 1.5s infinite;
+		border-bottom: 1px solid $mainTextColor;
+		border-left: 1px solid $mainTextColor;
+		height: 24px;
+		left: 50%;
+		margin-left: -12px;
+		position: absolute;
+		top: 20px;
+		transform: rotate(-45deg);
+		width: 24px;
+	}
+
+	@keyframes sdb {
+		0% {
+			opacity: 0;
+			transform: rotate(-45deg) translate(0, 0);
+		}
+
+		50% {
+			opacity: 1;
+		}
+
+		100% {
+			opacity: 0;
+			transform: rotate(-45deg) translate(-20px, 20px);
+		}
+	}
+}
+
+.form {
+	display: flex;
+	margin-top: 80px;
+
+	&__content {
+		width: calc(50% - 24px);
+
+		&:not(:first-child) {
+			margin-left: 24px;
+		}
+	}
+
+	&__inner {
+		border: none;
+	}
+
+	&__legend {
+		margin: 0 auto;
+	}
+
+	&__title {
+		font-size: 2rem;
+	}
+
+	&__inputGroup {
+		border: 1px solid black;
+		border-radius: 3px;
+		margin-top: 8px;
+		padding: 24px;
+	}
+
+	&__label {
+		display: block;
+		margin-top: 20px;
+	}
+
+	&__input {
+		display: block;
+		width: 100%;
+	}
+
+	&__content {
+		width: calc(50% - 24px);
+
+		&:not(:first-child) {
+			margin-left: 24px;
+		}
+	}
+
+	&__inner {
+		border: none;
+	}
+
+	&__legend {
+		text-align: center;
+	}
+
+	&__title {
+		font-size: 1.6rem;
+	}
+
+	&__inputGroup {
+		border: 1px solid black;
+		margin-top: 8px;
+		padding: 24px;
+	}
+
+	&__label {
+		display: block;
+		font-size: 1.4rem;
+		font-weight: bold;
+		margin-top: 20px;
+	}
+
+	&__input {
+		border: 1px solid $mainTextColor;
+		border-radius: 5px;
+		display: block;
+		font-size: 1.8rem;
+		padding: 5px;
+		width: 100%;
+	}
+
+	&__password {
+		position: relative;
+	}
+
+	&__inputIcon {
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+		height: 100%;
+		position: absolute;
+		right: 6px;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	&__button {
+		-webkit-appearance: none;
+		background: #fff;
+		border: 1px solid #000;
+		border-radius: 6px;
+		box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+		color: black;
+		cursor: pointer;
+		display: block;
+		font-weight: bold;
+		height: 44px;
+		margin: 16px auto 0;
+		outline: none;
+		width: 140px;
+
+		&:disabled {
+			background: gray;
+			cursor: default;
+		}
+	}
+}
+
+.error {
+	color: red;
+}
+
+.footer {
+	align-items: center;
+	background-color: #145374;
+	display: flex;
+	font-size: 1.4rem;
+	justify-content: center;
+	padding: 10px;
+	width: 100%;
+
+	&__text {
+		color: #f6f5f5;
+	}
+}
