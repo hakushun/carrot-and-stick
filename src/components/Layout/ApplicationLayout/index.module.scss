@@ -1,0 +1,194 @@
+@use '../../stylesheets/mixin' as mixin;
+
+.menu {
+	background: mixin.$brandColor;
+	box-shadow: 0 0 15px rgba(20, 83, 116, 0.16);
+	color: mixin.$bgColor;
+	height: 100vh;
+	padding: 30px;
+	position: relative;
+	transition: all 0.3s ease-in-out;
+	width: 300px;
+
+	&[data-menu-open="false"] {
+		transform: translateX(-190px);
+	}
+
+	&__title {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__titleText {
+		font-size: 3rem;
+	}
+
+	&__titleIcon {
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		height: 51px;
+		outline: none;
+	}
+
+	&__titleIconBar {
+		display: block;
+		height: 2px;
+		position: relative;
+		width: 50px;
+
+		&::before,
+		&::after {
+			background-color: mixin.$bgColor;
+			content: '';
+			height: 2px;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			width: 100%;
+		}
+
+		&::before {
+			transform: rotate(45deg);
+			transition: all 0.7s;
+		}
+
+		&::after {
+			transform: rotate(-45deg);
+			transition: all 0.7s;
+		}
+
+		&[data-menu-open="false"] {
+			background-color: mixin.$bgColor;
+			transition: all 0.7s;
+
+			&::before {
+				background-color: mixin.$bgColor;
+				content: "";
+				display: block;
+				height: 2px;
+				position: absolute;
+				top: -15px;
+				transform: rotate(0);
+				transition: all 0.7s;
+				width: 50px;
+			}
+
+			&::after {
+				background-color: mixin.$bgColor;
+				content: "";
+				display: block;
+				height: 2px;
+				position: absolute;
+				top: 15px;
+				transform: rotate(0);
+				transition: all 0.7s;
+				width: 50px;
+			}
+		}
+	}
+
+	&__pointContainer {
+		display: block;
+	}
+
+	&__pointTitle {
+		font-size: 1.8rem;
+		margin-top: 56px;
+		text-align: center;
+	}
+
+	&__pointBlock {
+		margin-top: 18px;
+		text-align: center;
+	}
+
+	&__pointNumber {
+		font-size: 5rem;
+	}
+
+	&__point {
+		display: inline-block;
+		font-size: 1.6rem;
+		margin-left: 10px;
+	}
+
+	&[data-menu-open="false"] {
+		& .menu__pointContainer {
+			display: block;
+		}
+
+		& .menu__pointNumber {
+			font-size: 20px;
+			position: relative;
+			right: 10px;
+			text-align: right;
+		}
+
+		& .menu__pointBlock {
+			text-align: right;
+		}
+
+		& .menu__point {
+			display: block;
+			position: relative;
+			right: 3px;
+		}
+
+		& .menu__pointTitle {
+			visibility: hidden;
+		}
+	}
+}
+
+.nav {
+	margin-top: 30px;
+
+	&[data-menu-open="false"] {
+		& .nav__listItemIcon_active {
+			height: 40px;
+			transform: translate(190px, -50%);
+			width: 40px;
+		}
+	}
+
+	&__listItemInner {
+		align-items: center;
+		display: flex;
+		margin-top: 20px;
+		position: relative;
+	}
+
+	&__listItemIcon {
+		cursor: pointer;
+		height: 30px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 30px;
+	}
+
+	&__listItemIconImg {
+		height: 100%;
+		width: 100%;
+	}
+
+	&__link {
+		color: mixin.$bgColor;
+		font-size: 2rem;
+		margin-left: 48px;
+	}
+
+	&[data-menu-open="false"] {
+		& .nav__link_active {
+			visibility: hidden;
+		}
+	}
+
+	&__sub {
+		bottom: 50px;
+		position: absolute;
+		width: 240px;
+	}
+}
