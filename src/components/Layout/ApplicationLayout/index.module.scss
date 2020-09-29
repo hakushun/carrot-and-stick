@@ -1,5 +1,9 @@
 @use '../../stylesheets/mixin' as mixin;
 
+.root {
+	display: flex;
+	background: #f6f5f5;
+}
 .menu {
 	background: mixin.$brandColor;
 	box-shadow: 0 0 15px rgba(20, 83, 116, 0.16);
