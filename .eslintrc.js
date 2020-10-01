@@ -33,7 +33,7 @@ module.exports = {
 	},
 	rules: {
 		// Possible Errors
-		// 'no-console': 'error',
+		'no-console': 'off',
 		'no-unexpected-multiline': 'error',
 
 		// Best Practices
@@ -118,6 +118,7 @@ module.exports = {
 
 		// TypeScript
 		'@typescript-eslint/no-explicit-any': 'off',
+		'@typescript-eslint/no-non-null-assertion': 'off',
 
 		// a11y
 		'jsx-a11y/no-static-element-interactions': 'off',
