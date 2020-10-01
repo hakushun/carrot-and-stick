@@ -112,18 +112,18 @@ export default reducer;
  * selectors
  */
 export const selectSignUp = createSelector(
-	[(state: RootState) => state.signUp],
+	[(state: RootState) => state.ui.signUp],
 	(signUp) => signUp,
 );
 
 export const selectSignUpUserNameErrors = createSelector(
-	[(state: RootState) => state.signUp],
+	[(state: RootState) => state.ui.signUp],
 	(signUp) => {
 		return signUp.edited.userName && signUp.validationErrors.userName.error;
 	},
 );
 export const selectSignUpMailAdressErrors = createSelector(
-	[(state: RootState) => state.signUp],
+	[(state: RootState) => state.ui.signUp],
 	(signUp) => {
 		return (
 			signUp.edited.mailAddress && signUp.validationErrors.mailAddress.error
@@ -132,14 +132,14 @@ export const selectSignUpMailAdressErrors = createSelector(
 );
 
 export const selectSignUpPasswordErrors = createSelector(
-	[(state: RootState) => state.signUp],
+	[(state: RootState) => state.ui.signUp],
 	(signUp) => {
 		return signUp.edited.password && signUp.validationErrors.password.error;
 	},
 );
 
 export const selectSignUpValidationErrors = createSelector(
-	[(state: RootState) => state.signUp],
+	[(state: RootState) => state.ui.signUp],
 	(signUp) => {
 		return (
 			!signUp.edited.userName ||

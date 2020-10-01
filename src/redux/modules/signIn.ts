@@ -100,12 +100,12 @@ export default reducer;
  */
 // createSelector：storeから欲しいstateを持ってくる、stateをここで加工できるよ
 export const selectSignIn = createSelector(
-	[(state: RootState) => state.signIn],
+	[(state: RootState) => state.ui.signIn],
 	(signIn) => signIn,
 );
 
 export const selectSignInMailAdressErrors = createSelector(
-	[(state: RootState) => state.signIn],
+	[(state: RootState) => state.ui.signIn],
 	(signIn) => {
 		return (
 			signIn.edited.mailAddress && signIn.validationErrors.mailAddress.error
@@ -114,14 +114,14 @@ export const selectSignInMailAdressErrors = createSelector(
 );
 
 export const selectSignInPasswordErrors = createSelector(
-	[(state: RootState) => state.signIn],
+	[(state: RootState) => state.ui.signIn],
 	(signIn) => {
 		return signIn.edited.password && signIn.validationErrors.password.error;
 	},
 );
 
 export const selectSignInValidationErrors = createSelector(
-	[(state: RootState) => state.signIn],
+	[(state: RootState) => state.ui.signIn],
 	(signIn) => {
 		return (
 			!signIn.edited.mailAddress ||
