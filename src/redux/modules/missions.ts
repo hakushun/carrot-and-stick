@@ -36,13 +36,12 @@ const addMission = (body: Mission): StepAction =>
 				body: JSON.stringify(body),
 			}),
 		[
-			({ mission }) =>
-				addMissionAcitons.done({ params: body, result: mission }),
+			({ data }) => addMissionAcitons.done({ params: body, result: data }),
 			({ error }) => addMissionAcitons.failed({ params: body, error }),
 		],
 	);
 
-export const createCheer = (mission: CreatePayload) => {
+export const createMission = (mission: CreatePayload) => {
 	return (dispatch: Dispatch<any>, getState: () => RootState): void => {
 		const id = generateId(getState().resources.missions.missions);
 		const registarDate = getTimestamp();
