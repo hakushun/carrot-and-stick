@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import style from './index.module.scss';
 import { SignIn } from '../../../redux/modules/signIn';
@@ -35,6 +35,41 @@ const Toppage: React.FC<Props> = React.memo(
 		handleSignUpChange,
 		showPassword,
 	}) => {
+		// windowの高さを取得
+		const windowHeight = () => {
+			const windowHeight = window.innerHeight;
+			return windowHeight;
+		};
+
+		// windowの高さの半分の値をlistのheightに適用する
+		const setHeight = () => {
+			const target = Array.from(
+				document.querySelectorAll('[data-js=mainVisual]'),
+			) as HTMLElement[];
+			target.forEach((item) => {
+				const height = windowHeight().toString();
+				item.style.height = height + 'px';
+			});
+		};
+
+		// スライドインアニメーション
+		const slideIn = () => {
+			const target = Array.from(
+				document.querySelectorAll('[data-slidein]'),
+			) as HTMLElement[];
+			target.forEach((item) => {
+				item.dataset.slidein = 'true';
+			});
+		}
+
+		// 初回読み込み時とresize eventが走ったときに発火
+		useEffect(() => {
+			setHeight();
+			window.addEventListener('load', slideIn);
+			window.addEventListener('resize', setHeight);
+			return () => window.removeEventListener('resize', setHeight);
+		}, []);
+
 		return (
 			<>
 				<header className={style.header}>
@@ -65,21 +100,34 @@ const Toppage: React.FC<Props> = React.memo(
 						</nav>
 					</div>
 				</header>
-				<div className={style.mainvisual}>
+				<div className={style.mainvisual} data-js="mainVisual">
 					<section className={style.mainvisual__inner}>
 						<div className={style.mainvisual__subtilte_wrapper}>
 							<p className={style.mainvisual__subtitle}>
-								結果ばかり求められる今の社会
-								<br />
-								「あんなに頑張ったのに評価してもらえなかった…」
-								<br />
-								「これだけ時間かけたのに、結果が悪かった…」
-								<br />
-								「リリースがなくなり努力が水の泡となって消えていった…」
+								<span
+									className={style.mainvisual__subtitleCol1}
+									data-slidein="false">
+									結果ばかり求められる今の社会
+								</span>
+								<span
+									className={style.mainvisual__subtitleCol2}
+									data-slidein="false">
+									「あんなに頑張ったのに評価してもらえなかった…」
+								</span>
+								<span
+									className={style.mainvisual__subtitleCol3}
+									data-slidein="false">
+									「これだけ時間かけたのに、結果が悪かった…」
+								</span>
+								<span
+									className={style.mainvisual__subtitleCol4}
+									data-slidein="false">
+									「リリースがなくなり努力が水の泡となって消えていった…」
+								</span>
 							</p>
 						</div>
 						<div className={style.mainvisual__title_wrapper}>
-							<h2 className={style.mainvisual__title}>
+							<h2 className={style.mainvisual__title} data-slidein="false">
 								頑張っているあなたの最大の理解者はあなたです!!
 								<br />
 								自分の努力を認め、褒めてあげましょう。
@@ -87,18 +135,18 @@ const Toppage: React.FC<Props> = React.memo(
 								結果なんて知らねえぜ!!! 頑張った分だけ報われよう
 							</h2>
 						</div>
-						<div className={style.button}>
+						<div className={style.button} data-slidein="false">
 							<button className={style.button__inner} type="button">
 								なにそれ詳しく！
 							</button>
-						</div>
-						<div className={style.scroll}>
-							<button
-								type="button"
-								className={style.scroll__inner}
-								onClick={() => smoothScroll()}>
-								SCROLL<span className={style.scroll__arrow}></span>
-							</button>
+							<div className={style.button__scroll}>
+								<button
+									type="button"
+									className={style.button__scrollInner}
+									onClick={() => smoothScroll()}>
+									SCROLL<span className={style.button__scrollArrow}></span>
+								</button>
+							</div>
 						</div>
 					</section>
 				</div>
