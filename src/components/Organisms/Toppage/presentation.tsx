@@ -43,13 +43,9 @@ const Toppage: React.FC<Props> = React.memo(
 
 		// windowの高さの半分の値をlistのheightに適用する
 		const setHeight = () => {
-			const target = Array.from(
-				document.querySelectorAll('[data-js=mainVisual]'),
-			) as HTMLElement[];
-			target.forEach((item) => {
-				const height = windowHeight().toString();
-				item.style.height = height + 'px';
-			});
+			const target = document.querySelector('[data-js=mainVisual]') as HTMLDivElement;
+			const height = windowHeight().toString();
+			target.style.height = height + 'px';
 		};
 
 		// スライドインアニメーション

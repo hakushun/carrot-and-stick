@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import styles from './index.module.scss';
 
 // http://localhost:3000/mypage
 
 export const ApplicationLayout: React.FC = ({ children }) => {
+	// メニューの幅をダミーにセット
+	const setMenuWidth = () => {
+		const menu = document.getElementById('menu') as HTMLDivElement;
+		const target = document.querySelector('[data-menu=dummy]') as HTMLDivElement;
+		const menuWidth = menu.offsetWidth;
+		target.style.width = menuWidth + 'px';
+	};
+
 	const toggleClass = (elm: HTMLElement, name: string) => {
 		if (elm.getAttribute(name) === 'true') {
 			elm.setAttribute('data-menu-open', 'false');
@@ -13,18 +21,28 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 		elm.setAttribute('data-menu-open', 'true');
 	};
 
+	// 初回読み込み時に発火
+	useEffect(() => {
+		setMenuWidth();
+		window.addEventListener('resize', setMenuWidth);
+		return () => window.removeEventListener('resize', setMenuWidth);
+	}, []);
+
 	const toggleMenu = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		const dataAttr = 'data-menu-open';
 		e.preventDefault();
 		const menu = document.getElementById('menu') as HTMLDivElement;
 		const menuIcon = document.getElementById('menu_icon') as HTMLButtonElement;
 		const nav = document.getElementById('nav') as HTMLButtonElement;
-		toggleClass(menu, 'data-menu-open');
-		toggleClass(menuIcon, 'data-menu-open');
-		toggleClass(nav, 'data-menu-open');
+		toggleClass(menu, dataAttr);
+		toggleClass(menuIcon, dataAttr);
+		toggleClass(nav, dataAttr);
+		menu.addEventListener('transitionend', setMenuWidth);
 	};
 
 	return (
 		<div className={styles.root}>
+			<div className={styles.menuDummy} data-menu="dummy"></div>
 			<div id="menu" className={styles.menu} data-menu-open="true">
 				<div className={styles.menu__title}>
 					<h1 className={styles.menu__titleText}>MENU</h1>
@@ -243,9 +261,7 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 									<a
 										className={styles.nav__link + ' ' + styles.nav__link_active}
 										href="/">
-										<span className={styles.nav__linkText}>
-											マイページTOP
-										</span>
+										<span className={styles.nav__linkText}>マイページTOP</span>
 									</a>
 								</div>
 							</Link>
@@ -268,9 +284,7 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 									<a
 										className={styles.nav__link + ' ' + styles.nav__link_active}
 										href="/">
-										<span className={styles.nav__linkText}>
-											ログアウト
-										</span>
+										<span className={styles.nav__linkText}>ログアウト</span>
 									</a>
 								</div>
 							</Link>

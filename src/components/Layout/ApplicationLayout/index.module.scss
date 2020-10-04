@@ -4,8 +4,13 @@
 	display: flex;
 	background: #f6f5f5;
 }
-.menu {
+.menuDummy {
 	position: relative;
+	transition: all 0.2s ease-in-out;
+}
+
+.menu {
+	position: fixed;
 	z-index: mixin.$z-menu;
 	padding: 30px;
 	height: 100vh;
@@ -209,9 +214,8 @@
 .nav {
 	margin-top: 30px;
 	@include mixin.mq('tablet'){
-		margin-top: mixin.get_vw(30,1200);
+		margin-top: mixin.get_vw(50,1200);
 	}
-
 
 	&__listItemInner {
 		align-items: center;
