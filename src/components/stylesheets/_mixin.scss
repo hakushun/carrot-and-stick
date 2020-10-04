@@ -3,3 +3,32 @@ $subTextColor:  #717171;
 $brandColor: #145374;
 $bgColor: #f6f5f5;
 $lightColor: #ee6f57;
+
+// z-index
+$z-menu: 1000;
+
+
+$breakpoints: (
+  'md': 'screen and (max-width: 767px)',
+  'lg': 'screen and (min-width: 768px)',
+  'tablet': 'screen and (min-width: 768px) and (max-width: 1200px)',
+) !default;
+
+// メディアクエリ
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// px→vwに変換
+@function get_vw($size, $viewport:375) {
+  $rate: 100 / $viewport;
+  @return $rate * $size * 1vw;
+}
+
+// px→vhに変換
+@function get_vh($size, $viewport:375) {
+  $rate: 100 / $viewport;
+  @return $rate * $size * 1vh;
+}

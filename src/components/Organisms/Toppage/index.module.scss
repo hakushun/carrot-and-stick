@@ -40,6 +40,25 @@ $bgColor: #f6f5f5;
 
 	&__link {
 		color: $bgColor;
+		position: relative;
+
+		&:after {
+			position: absolute;
+			bottom: -5px;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			background-color: #f6f5f5;
+			content: '';
+			transform: scale(0,1);
+			transition: all 0.3s ease;
+		}
+
+		&:hover {
+			&::after{
+				transform: scale(1,1);
+			}
+		}
 	}
 }
 
@@ -56,7 +75,6 @@ $bgColor: #f6f5f5;
 
 .mainvisual {
 	background-color: $bgColor;
-	height: 100vh;
 
 	&__inner {
 		margin: 0 auto;
@@ -66,10 +84,26 @@ $bgColor: #f6f5f5;
 
 	&__subtilte_wrapper {
 		padding: 24px 0;
+		width: 90%;
+		margin: 0 auto;
 	}
 
 	&__subtitle {
 		font-size: 2rem;
+
+		@for $i from 1 through 4 {
+			&Col#{$i} {
+				display: block;
+				transition: all 1.5s ease;
+				transition-delay: 0.7s * $i;
+				opacity: 0;
+				transform: translate(-20%);
+				&[data-slidein='true'] {
+					transform: translate(0);
+					opacity: 1;
+				}
+			}
+		}
 	}
 
 	&__title_wrapper {
@@ -80,14 +114,32 @@ $bgColor: #f6f5f5;
 	&__title {
 		font-size: 3.2rem;
 		font-weight: bold;
+		opacity: 0;
+		transition: all 2s ease;
+		transition-delay: 4s;
+
+		&[data-slidein='true'] {
+			opacity: 1;
+		}
 	}
 }
 
 .button {
-	margin-top: 144px;
+	position: absolute;
+	bottom: 40px;
+	left: 50%;
+	transform: translateX(-50%);
 	text-align: center;
+	opacity: 0;
+	transition: all 2s ease;
+	transition-delay: 5s;
+
+	&[data-slidein='true'] {
+		opacity: 1;
+	}
 
 	&__inner {
+		position: relative;
 		background-color: #fff;
 		border: none;
 		border-radius: 30px;
@@ -121,64 +173,56 @@ $bgColor: #f6f5f5;
 			}
 		}
 	}
+
+	&__scroll {
+		margin-top: 40px;
+		text-align: center;
+
+		&Inner {
+			background-color: transparent;
+			border: none;
+			color: $mainTextColor;
+			cursor: pointer;
+			font-size: 1.8rem;
+			outline: none;
+			padding: 10px 0;
+			position: relative;
+		}
+
+		&Arrow {
+			animation: sdb 1.5s infinite;
+			border-bottom: 1px solid $mainTextColor;
+			border-left: 1px solid $mainTextColor;
+			height: 24px;
+			left: 50%;
+			margin-left: -12px;
+			position: absolute;
+			top: 20px;
+			transform: rotate(-45deg);
+			width: 24px;
+		}
+
+		@keyframes sdb {
+			0% {
+				opacity: 0;
+				transform: rotate(-45deg) translate(0, 0);
+			}
+
+			50% {
+				opacity: 1;
+			}
+
+			100% {
+				opacity: 0;
+				transform: rotate(-45deg) translate(-20px, 20px);
+			}
+		}
+	}
 }
 
-.scroll {
-	margin-top: 72px;
-	text-align: center;
-
-	&__inner {
-		background-color: transparent;
-		border: none;
-		color: $mainTextColor;
-		cursor: pointer;
-		font-size: 1.8rem;
-		outline: none;
-		padding: 10px 0;
-		position: relative;
-	}
-
-	&__arrow {
-		animation: sdb 1.5s infinite;
-		border-bottom: 1px solid $mainTextColor;
-		border-left: 1px solid $mainTextColor;
-		height: 24px;
-		left: 50%;
-		margin-left: -12px;
-		position: absolute;
-		top: 20px;
-		transform: rotate(-45deg);
-		width: 24px;
-	}
-
-	@keyframes sdb {
-		0% {
-			opacity: 0;
-			transform: rotate(-45deg) translate(0, 0);
-		}
-
-		50% {
-			opacity: 1;
-		}
-
-		100% {
-			opacity: 0;
-			transform: rotate(-45deg) translate(-20px, 20px);
-		}
-	}
-}
 
 .form {
 	display: flex;
-	margin-top: 80px;
-
-	&__content {
-		width: calc(50% - 24px);
-
-		&:not(:first-child) {
-			margin-left: 24px;
-		}
-	}
 
 	&__inner {
 		border: none;
@@ -186,6 +230,7 @@ $bgColor: #f6f5f5;
 
 	&__legend {
 		margin: 0 auto;
+		text-align: center;
 	}
 
 	&__title {
@@ -195,18 +240,8 @@ $bgColor: #f6f5f5;
 	&__inputGroup {
 		border: 1px solid black;
 		border-radius: 3px;
-		margin-top: 8px;
-		padding: 24px;
-	}
-
-	&__label {
-		display: block;
 		margin-top: 20px;
-	}
-
-	&__input {
-		display: block;
-		width: 100%;
+		padding: 24px;
 	}
 
 	&__content {
@@ -215,24 +250,6 @@ $bgColor: #f6f5f5;
 		&:not(:first-child) {
 			margin-left: 24px;
 		}
-	}
-
-	&__inner {
-		border: none;
-	}
-
-	&__legend {
-		text-align: center;
-	}
-
-	&__title {
-		font-size: 1.6rem;
-	}
-
-	&__inputGroup {
-		border: 1px solid black;
-		margin-top: 8px;
-		padding: 24px;
 	}
 
 	&__label {
@@ -243,6 +260,7 @@ $bgColor: #f6f5f5;
 	}
 
 	&__input {
+		display: block;
 		border: 1px solid $mainTextColor;
 		border-radius: 5px;
 		display: block;
@@ -264,6 +282,7 @@ $bgColor: #f6f5f5;
 		right: 6px;
 		top: 50%;
 		transform: translateY(-50%);
+		outline: none;
 	}
 
 	&__button {
@@ -305,3 +324,4 @@ $bgColor: #f6f5f5;
 		color: #f6f5f5;
 	}
 }
+

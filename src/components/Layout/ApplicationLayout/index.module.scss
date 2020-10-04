@@ -4,36 +4,55 @@
 	display: flex;
 	background: #f6f5f5;
 }
+
+.menuDummy {
+	transition: all 0.2s ease-in-out;
+	height: 100%;
+	flex-shrink: 0;
+}
+
 .menu {
+	position: fixed;
+	z-index: mixin.$z-menu;
+	padding: 30px;
+	height: 100vh;
+	min-height: 750px;
+	width: mixin.get_vw(300,1200);
+	max-width: 300px;
+	color: mixin.$bgColor;
 	background: mixin.$brandColor;
 	box-shadow: 0 0 15px rgba(20, 83, 116, 0.16);
-	color: mixin.$bgColor;
-	height: 100vh;
-	padding: 30px;
-	position: relative;
 	transition: all 0.3s ease-in-out;
-	width: 300px;
-
-	&[data-menu-open="false"] {
-		transform: translateX(-190px);
+	@include mixin.mq('tablet'){
+		padding: mixin.get_vw(30, 1200);
+		min-height: 580px;
 	}
 
 	&__title {
-		align-items: center;
-		display: flex;
-		justify-content: space-between;
+		position: relative;
 	}
 
 	&__titleText {
 		font-size: 3rem;
+		@include mixin.mq('tablet'){
+			font-size: mixin.get_vw(30,1200);
+		}
 	}
 
 	&__titleIcon {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		padding: 0;
+		transform: translateY(-50%);
 		background: transparent;
 		border: none;
 		cursor: pointer;
 		height: 51px;
 		outline: none;
+		@include mixin.mq('tablet'){
+			height: mixin.get_vw(51,1200);
+		}
 	}
 
 	&__titleIconBar {
@@ -41,6 +60,9 @@
 		height: 2px;
 		position: relative;
 		width: 50px;
+		@include mixin.mq('tablet'){
+			width: mixin.get_vw(50,1200);
+		}
 
 		&::before,
 		&::after {
@@ -77,6 +99,9 @@
 				transform: rotate(0);
 				transition: all 0.7s;
 				width: 50px;
+				@include mixin.mq('tablet'){
+					width: mixin.get_vw(50,1200);
+				}
 			}
 
 			&::after {
@@ -89,18 +114,27 @@
 				transform: rotate(0);
 				transition: all 0.7s;
 				width: 50px;
+				@include mixin.mq('tablet'){
+					width: mixin.get_vw(50,1200);
+				}
 			}
 		}
 	}
 
 	&__pointContainer {
 		display: block;
+		position: relative;
+		white-space: nowrap;
 	}
 
 	&__pointTitle {
 		font-size: 1.8rem;
 		margin-top: 56px;
 		text-align: center;
+		@include mixin.mq('tablet'){
+			margin-top: 40px;
+			font-size: 1.8rem;
+		}
 	}
 
 	&__pointBlock {
@@ -110,51 +144,79 @@
 
 	&__pointNumber {
 		font-size: 5rem;
+		@include mixin.mq('tablet'){
+			font-size: 4.0rem;
+		}
 	}
 
 	&__point {
 		display: inline-block;
 		font-size: 1.6rem;
 		margin-left: 10px;
+		@include mixin.mq('tablet'){
+			font-size: 1.4rem;
+		}
+	}
+
+	&__closePoint {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		display: none;
 	}
 
 	&[data-menu-open="false"] {
+		max-width: 100px;
+		width: mixin.get_vw(100,1200);
+
+		& .menu__titleText {
+			visibility: hidden;
+		}
+
+		& .menu__titleIcon {
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
 		& .menu__pointContainer {
 			display: block;
 		}
 
-		& .menu__pointNumber {
-			font-size: 20px;
-			position: relative;
-			right: 10px;
-			text-align: right;
-		}
-
-		& .menu__pointBlock {
-			text-align: right;
-		}
-
-		& .menu__point {
-			display: block;
-			position: relative;
-			right: 3px;
-		}
-
-		& .menu__pointTitle {
+		& .menu__openPoint {
 			visibility: hidden;
+		}
+
+		& .menu__closePoint {
+			display: block;
+
+			& .menu__pointNumber {
+				font-size: 20px;
+				position: relative;
+				@include mixin.mq('tablet'){
+					font-size: mixin.get_vw(20, 1200);
+				}
+			}
+
+			& .menu__pointBlock {
+				margin-top: 30px;
+				@include mixin.mq('tablet'){
+					margin-top: mixin.get_vw(30,1200);
+				}
+			}
+
+			& .menu__point {
+				display: block;
+				position: relative;
+				margin-left: 0;
+			}
 		}
 	}
 }
 
 .nav {
 	margin-top: 30px;
-
-	&[data-menu-open="false"] {
-		& .nav__listItemIcon_active {
-			height: 40px;
-			transform: translate(190px, -50%);
-			width: 40px;
-		}
+	@include mixin.mq('tablet'){
+		margin-top: mixin.get_vw(50,1200);
 	}
 
 	&__listItemInner {
@@ -162,15 +224,22 @@
 		display: flex;
 		margin-top: 20px;
 		position: relative;
+		@include mixin.mq('tablet'){
+			margin-top: mixin.get_vw(20,1200);
+		}
 	}
 
 	&__listItemIcon {
 		cursor: pointer;
 		height: 30px;
+		width: 30px;
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
-		width: 30px;
+		@include mixin.mq('tablet'){
+			height: mixin.get_vw(30,1200);
+			width: mixin.get_vw(30,1200);
+		}
 	}
 
 	&__listItemIconImg {
@@ -182,17 +251,25 @@
 		color: mixin.$bgColor;
 		font-size: 2rem;
 		margin-left: 48px;
-	}
+		white-space: nowrap;
 
-	&[data-menu-open="false"] {
-		& .nav__link_active {
-			visibility: hidden;
+		@include mixin.mq('tablet'){
+			margin-left: mixin.get_vw(48, 1200);
+			font-size: mixin.get_vw(20, 1200);
 		}
 	}
 
 	&__sub {
 		bottom: 50px;
 		position: absolute;
-		width: 240px;
+		@include mixin.mq('tablet'){
+			bottom: mixin.get_vw(50,1200);
+		}
+	}
+
+	&[data-menu-open="false"] {
+		& .nav__linkText {
+			visibility: hidden;
+		}
 	}
 }

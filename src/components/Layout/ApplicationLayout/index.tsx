@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import styles from './index.module.scss';
 
 // http://localhost:3000/mypage
 
 export const ApplicationLayout: React.FC = ({ children }) => {
+	// メニューの幅をダミーにセット
+	const setMenuWidth = () => {
+		const menu = document.getElementById('menu') as HTMLDivElement;
+		const target = document.querySelector('[data-menu=dummy]') as HTMLDivElement;
+		const menuWidth = menu.offsetWidth;
+		target.style.width = menuWidth + 'px';
+	};
+
 	const toggleClass = (elm: HTMLElement, name: string) => {
 		if (elm.getAttribute(name) === 'true') {
 			elm.setAttribute('data-menu-open', 'false');
@@ -13,18 +21,28 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 		elm.setAttribute('data-menu-open', 'true');
 	};
 
+	// 初回読み込み時に発火
+	useEffect(() => {
+		setMenuWidth();
+		window.addEventListener('resize', setMenuWidth);
+		return () => window.removeEventListener('resize', setMenuWidth);
+	}, []);
+
 	const toggleMenu = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		const dataAttr = 'data-menu-open';
 		e.preventDefault();
 		const menu = document.getElementById('menu') as HTMLDivElement;
 		const menuIcon = document.getElementById('menu_icon') as HTMLButtonElement;
 		const nav = document.getElementById('nav') as HTMLButtonElement;
-		toggleClass(menu, 'data-menu-open');
-		toggleClass(menuIcon, 'data-menu-open');
-		toggleClass(nav, 'data-menu-open');
+		toggleClass(menu, dataAttr);
+		toggleClass(menuIcon, dataAttr);
+		toggleClass(nav, dataAttr);
+		menu.addEventListener('transitionend', setMenuWidth);
 	};
 
 	return (
 		<div className={styles.root}>
+			<div className={styles.menuDummy} data-menu="dummy"></div>
 			<div id="menu" className={styles.menu} data-menu-open="true">
 				<div className={styles.menu__title}>
 					<h1 className={styles.menu__titleText}>MENU</h1>
@@ -46,10 +64,18 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 						' ' +
 						styles.menu__pointContainer_active
 					}>
-					<h2 className={styles.menu__pointTitle}>がんばりポイント</h2>
-					<div className={styles.menu__pointBlock}>
-						<strong className={styles.menu__pointNumber}>100</strong>
-						<span className={styles.menu__point}>points</span>
+					<div className={styles.menu__openPoint}>
+						<h2 className={styles.menu__pointTitle}>がんばりポイント</h2>
+						<div className={styles.menu__pointBlock}>
+							<strong className={styles.menu__pointNumber}>100</strong>
+							<span className={styles.menu__point}>points</span>
+						</div>
+					</div>
+					<div className={styles.menu__closePoint}>
+						<div className={styles.menu__pointBlock}>
+							<strong className={styles.menu__pointNumber}>100</strong>
+							<span className={styles.menu__point}>points</span>
+						</div>
 					</div>
 				</div>
 				<nav id="nav" className={styles.nav} data-menu-open="true">
@@ -70,9 +96,11 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										/>
 									</div>
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
-										がんばりスト
+										<span className={styles.nav__linkText}>がんばりスト</span>
 									</a>
 								</div>
 							</Link>
@@ -93,9 +121,13 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 								</div>
 								<Link href="/">
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
-										ごほうびリスト
+										<span className={styles.nav__linkText}>
+											ごほうびリスト
+										</span>
 									</a>
 								</Link>
 							</div>
@@ -116,9 +148,11 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										/>
 									</div>
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
-										交換リスト
+										<span className={styles.nav__linkText}>交換リスト</span>
 									</a>
 								</div>
 							</Link>
@@ -139,9 +173,11 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										/>
 									</div>
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
-										履歴
+										<span className={styles.nav__linkText}>履歴</span>
 									</a>
 								</div>
 							</Link>
@@ -162,9 +198,11 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										/>
 									</div>
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
-										統計
+										<span className={styles.nav__linkText}>統計</span>
 									</a>
 								</div>
 							</Link>
@@ -185,9 +223,11 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										/>
 									</div>
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
-										使い方
+										<span className={styles.nav__linkText}>使い方</span>
 									</a>
 								</div>
 							</Link>
@@ -208,9 +248,11 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										/>
 									</div>
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
-										お問い合わせ
+										<span className={styles.nav__linkText}>お問い合わせ</span>
 									</a>
 								</div>
 							</Link>
@@ -233,9 +275,13 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										/>
 									</div>
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
-										マイページTOP
+										<span className={styles.nav__linkText}>
+											マイページTOP
+										</span>
 									</a>
 								</div>
 							</Link>
@@ -256,9 +302,11 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										/>
 									</div>
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
-										ログアウト
+										<span className={styles.nav__linkText}>ログアウト</span>
 									</a>
 								</div>
 							</Link>
