@@ -96,7 +96,9 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										/>
 									</div>
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
 										<span className={styles.nav__linkText}>がんばりスト</span>
 									</a>
@@ -119,9 +121,13 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 								</div>
 								<Link href="/">
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
-										<span className={styles.nav__linkText}>ごほうびリスト</span>
+										<span className={styles.nav__linkText}>
+											ごほうびリスト
+										</span>
 									</a>
 								</Link>
 							</div>
@@ -142,7 +148,9 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										/>
 									</div>
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
 										<span className={styles.nav__linkText}>交換リスト</span>
 									</a>
@@ -165,7 +173,9 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										/>
 									</div>
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
 										<span className={styles.nav__linkText}>履歴</span>
 									</a>
@@ -188,7 +198,9 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										/>
 									</div>
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
 										<span className={styles.nav__linkText}>統計</span>
 									</a>
@@ -211,7 +223,9 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										/>
 									</div>
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
 										<span className={styles.nav__linkText}>使い方</span>
 									</a>
@@ -234,7 +248,9 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										/>
 									</div>
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
 										<span className={styles.nav__linkText}>お問い合わせ</span>
 									</a>
@@ -259,9 +275,13 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										/>
 									</div>
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
-										<span className={styles.nav__linkText}>マイページTOP</span>
+										<span className={styles.nav__linkText}>
+											マイページTOP
+										</span>
 									</a>
 								</div>
 							</Link>
@@ -282,7 +302,9 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										/>
 									</div>
 									<a
-										className={styles.nav__link + ' ' + styles.nav__link_active}
+										className={
+											styles.nav__link + ' ' + styles.nav__link_active
+										}
 										href="/">
 										<span className={styles.nav__linkText}>ログアウト</span>
 									</a>
