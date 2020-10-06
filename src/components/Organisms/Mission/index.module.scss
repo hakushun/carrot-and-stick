@@ -5,6 +5,9 @@ $pict-orange:#EDA709;
 $pict-red:#F70606;
 
 .mission {
+	height: 100vh;
+	overflow-y: auto;
+
   &__inner {
     flex: 1 0 auto;
     padding: 50px;
