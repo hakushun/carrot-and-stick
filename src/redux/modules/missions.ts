@@ -3,9 +3,10 @@ import { reducerWithInitialState } from 'typescript-fsa-reducers';
 import { createSelector } from 'reselect';
 import { Dispatch } from 'react';
 import { StepAction, steps } from 'redux-effects-steps';
+import axios from 'axios';
 import { RootState } from './reducers';
 import { generateId, getTimestamp } from '../../libs/utility';
-import { Mission } from './mission';
+import { Mission, MissionStatus } from './mission';
 
 interface Missions {
 	missions: Mission[];
@@ -20,23 +21,24 @@ type CreatePayload = {
 	memo: string;
 };
 
+type ChangeStatus = {
+	mission: Mission;
+	status: MissionStatus;
+};
 /**
  * action
  */
 export const actionCreator = actionCreatorFactory();
 export const addMissionAcitons = actionCreator.async<Mission, Mission, Error>(
-	'ADD_Mission',
+	'ADD_MISSION',
 );
+export const changeStatus = actionCreator<ChangeStatus>('CHANGE_STATUS');
 const addMission = (body: Mission): StepAction =>
 	steps(
 		addMissionAcitons.started(body),
-		() =>
-			fetch('/api/missions', {
-				method: 'POST',
-				body: JSON.stringify(body),
-			}),
+		() => axios.post('/api/missions', { data: body }),
 		[
-			({ data }) => addMissionAcitons.done({ params: body, result: data }),
+			({ data }) => addMissionAcitons.done({ params: body, result: data.data }),
 			({ error }) => addMissionAcitons.failed({ params: body, error }),
 		],
 	);
@@ -80,13 +82,31 @@ const reducer = reducerWithInitialState(INITIAL_STATE)
 			...state,
 			isLoading: false,
 		};
-	});
+	})
+	.case(changeStatus, (state, payload) => ({
+		...state,
+		missions: [
+			...state.missions.map((mission) => {
+				if (mission.id === payload.mission.id) {
+					return {
+						...payload.mission,
+						status: payload.status,
+					};
+				}
+				return mission;
+			}),
+		],
+	}));
 
 export default reducer;
 
 /**
  * selector
  */
+export const selectMissions = createSelector(
+	[(state: RootState) => state.resources.missions.missions],
+	(missions) => missions,
+);
 export const selectNewMissions = createSelector(
 	[(state: RootState) => state.resources.missions.missions],
 	(missions) => missions.filter((mission) => mission.status === 'new'),
