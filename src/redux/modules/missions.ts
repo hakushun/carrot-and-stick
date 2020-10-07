@@ -86,15 +86,11 @@ const reducer = reducerWithInitialState(INITIAL_STATE)
 	.case(changeStatus, (state, payload) => ({
 		...state,
 		missions: [
-			...state.missions.map((mission) => {
-				if (mission.id === payload.mission.id) {
-					return {
-						...payload.mission,
-						status: payload.status,
-					};
-				}
-				return mission;
-			}),
+			...state.missions.filter((mission) => mission.id !== payload.mission.id),
+			{
+				...payload.mission,
+				status: payload.status,
+			},
 		],
 	}));
 
