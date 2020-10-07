@@ -33,6 +33,11 @@ export const addMissionAcitons = actionCreator.async<Mission, Mission, Error>(
 	'ADD_MISSION',
 );
 export const changeStatus = actionCreator<ChangeStatus>('CHANGE_STATUS');
+export const updateMissionAcitons = actionCreator.async<
+	Mission,
+	Mission,
+	Error
+>('UPDATE_MISSION');
 const addMission = (body: Mission): StepAction =>
 	steps(
 		addMissionAcitons.started(body),
@@ -42,7 +47,16 @@ const addMission = (body: Mission): StepAction =>
 			({ error }) => addMissionAcitons.failed({ params: body, error }),
 		],
 	);
-
+export const updateMission = (body: Mission): StepAction =>
+	steps(
+		updateMissionAcitons.started(body),
+		() => axios.post('/api/missions', { data: body }),
+		[
+			({ data }) =>
+				updateMissionAcitons.done({ params: body, result: data.data }),
+			({ error }) => updateMissionAcitons.failed({ params: body, error }),
+		],
+	);
 export const createMission = (mission: CreatePayload) => {
 	return (dispatch: Dispatch<any>, getState: () => RootState): void => {
 		const id = generateId(getState().resources.missions.missions);
@@ -92,7 +106,30 @@ const reducer = reducerWithInitialState(INITIAL_STATE)
 				status: payload.status,
 			},
 		],
-	}));
+	}))
+	.case(updateMissionAcitons.started, (state) => ({
+		...state,
+		isLoading: true,
+	}))
+	.case(updateMissionAcitons.done, (state, payload) => ({
+		...state,
+		isLoading: true,
+		missions: [
+			...state.missions.map((mission) => {
+				if (mission.id === payload.result.id) {
+					return { ...payload.result };
+				}
+				return mission;
+			}),
+		],
+	}))
+	.case(updateMissionAcitons.failed, (state, payload) => {
+		console.log(payload.error);
+		return {
+			...state,
+			isLoading: false,
+		};
+	});
 
 export default reducer;
 
