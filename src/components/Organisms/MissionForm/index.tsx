@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { change, selectMission } from '../../../redux/modules/mission';
+import { createMission } from '../../../redux/modules/missions';
 import { Modal } from '../Modal';
 import { MissionForm as Presentational } from './MissionForm';
 
@@ -15,9 +16,29 @@ export const MissionForm: React.FC = React.memo(() => {
 		[dispatch],
 	);
 
+	const handleCreateMission = useCallback(
+		(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+			e.preventDefault();
+			dispatch(
+				createMission({
+					title: mission.title,
+					dueDate: mission.dueDate,
+					mentalPoint: mission.mentalPoint,
+					pysicalPoint: mission.pysicalPoint,
+					totalPoint: mission.totalPoint,
+					memo: mission.memo,
+				}),
+			);
+		},
+		[mission],
+	);
 	return (
 		<Modal>
-			<Presentational mission={mission} handleChange={handleChange} />
+			<Presentational
+				mission={mission}
+				handleChange={handleChange}
+				handleCreateMission={handleCreateMission}
+			/>
 		</Modal>
 	);
 });
