@@ -1,0 +1,44 @@
+.modal {
+	background: #fff;
+	left: 50%;
+	min-height: 500px;
+	min-width: 800px;
+	padding: 20px;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.close {
+	height: 50px;
+	position: fixed;
+	right: 50px;
+	top: 50px;
+	width: 50px;
+
+	&__button {
+		display: inline-block;
+		height: 100%;
+		position: relative;
+		width: 100%;
+
+		&::before,
+		&::after {
+			background-color: #fff;
+			content: '';
+			height: 4px;
+			left: 50%;
+			position: absolute;
+			top: 50%;
+			width: 100%;
+		}
+
+		&::before {
+			transform: translate(-50%, -50%) rotate(-45deg);
+		}
+
+		&::after {
+			transform: translate(-50%, -50%) rotate(45deg);
+		}
+	}
+}
