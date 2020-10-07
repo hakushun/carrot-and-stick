@@ -13,7 +13,7 @@ export const CheerForm: React.FC<Props> = React.memo(
 	({ cheer, handleChange }) => {
 		return (
 			<form className={styles.cheer}>
-				<div>
+				<div className={styles.cheer__inner}>
 					<label htmlFor="cheer_title" className={styles.cheer__label}>
 						<span className={styles.cheer__labelTitle}>ご褒美タイトル</span>
 						<textarea
@@ -47,7 +47,9 @@ export const CheerForm: React.FC<Props> = React.memo(
 							<span className={styles.cheer__labelTitle}>メモ</span>
 							<textarea
 								id="cheer_memo"
-								className={styles.cheer__textarea_memo}
+								className={
+									styles.cheer__textarea + ' ' + styles.cheer__textarea_memo
+								}
 								name="memo"
 								required
 								aria-required
