@@ -1,0 +1,14 @@
+@use '../../stylesheets/mixin' as mixin;
+
+.cheer__flex {
+	display: flex;
+
+	&__title {
+		display: block;
+	}
+
+	&__inputTitle {
+		height: 200px;
+		width: 500px;
+	}
+}
