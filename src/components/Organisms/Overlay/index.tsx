@@ -4,8 +4,13 @@ import styles from './index.module.scss';
 
 export const Overlay: React.FC = React.memo((props) => {
 	const { children } = props;
-	return ReactDOM.createPortal(
-		<div className={styles.root}>{children}</div>,
-		document.getElementById('overlay')!,
-	);
+
+	if (process.browser) {
+		return ReactDOM.createPortal(
+			<div className={styles.root}>{children}</div>,
+			document.getElementById('overlay')!,
+		);
+	} else {
+		return <div className={styles.root}>{children}</div>;
+	}
 });
