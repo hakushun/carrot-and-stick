@@ -13,10 +13,19 @@ type Props = {
 	handleUpdateMission: (
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
 	) => void;
+	handleDeleteMission: (
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+	) => void;
 };
 
 export const MissionForm: React.FC<Props> = React.memo(
-	({ mission, handleChange, handleCreateMission, handleUpdateMission }) => {
+	({
+		mission,
+		handleChange,
+		handleCreateMission,
+		handleUpdateMission,
+		handleDeleteMission,
+	}) => {
 		return (
 			<form className={styles.form}>
 				<div className={styles.form__title}>
@@ -152,7 +161,10 @@ export const MissionForm: React.FC<Props> = React.memo(
 								onClick={handleUpdateMission}>
 								更新する
 							</button>
-							<button className={styles.form__button} type="button">
+							<button
+								className={styles.form__button}
+								type="button"
+								onClick={handleDeleteMission}>
 								削除する
 							</button>
 						</>

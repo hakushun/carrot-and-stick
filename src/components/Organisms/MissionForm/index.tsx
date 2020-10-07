@@ -1,7 +1,11 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { change, selectMission } from '../../../redux/modules/mission';
-import { createMission, updateMission } from '../../../redux/modules/missions';
+import {
+	createMission,
+	deleteMission,
+	updateMission,
+} from '../../../redux/modules/missions';
 import { Modal } from '../Modal';
 import { MissionForm as Presentational } from './MissionForm';
 
@@ -40,6 +44,13 @@ export const MissionForm: React.FC = React.memo(() => {
 		},
 		[mission],
 	);
+	const handleDeleteMission = useCallback(
+		(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+			e.preventDefault();
+			dispatch(deleteMission(mission));
+		},
+		[mission],
+	);
 	return (
 		<Modal>
 			<Presentational
@@ -47,6 +58,7 @@ export const MissionForm: React.FC = React.memo(() => {
 				handleChange={handleChange}
 				handleCreateMission={handleCreateMission}
 				handleUpdateMission={handleUpdateMission}
+				handleDeleteMission={handleDeleteMission}
 			/>
 		</Modal>
 	);
