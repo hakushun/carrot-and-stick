@@ -14,10 +14,10 @@ interface Missions {
 type CreatePayload = {
 	title: string;
 	dueDate: string;
-	mentalDamage: number;
-	pysicalDamage: number;
-	point: number;
-	memo: string[];
+	mentalPoint: number;
+	pysicalPoint: number;
+	totalPoint: number;
+	memo: string;
 };
 
 /**

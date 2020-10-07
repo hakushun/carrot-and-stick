@@ -8,10 +8,10 @@ export type Mission = {
 	id: number;
 	title: string;
 	dueDate: string;
-	mentalDamage: number;
-	pysicalDamage: number;
-	point: number;
-	memo: string[];
+	mentalPoint: number;
+	pysicalPoint: number;
+	totalPoint: number;
+	memo: string;
 	status: MissionStatus;
 	registarDate: number;
 	completeDate: number;
@@ -27,11 +27,12 @@ type ChangePayload = {
  * action
  */
 const actionCreator = actionCreatorFactory();
-const change = actionCreator<ChangePayload>('CHANGE_MISSION');
+export const change = actionCreator<ChangePayload>('CHANGE_MISSION');
 
 const INITIAL_STATE = {
 	id: 0,
 	title: '',
+	dueDate: '',
 	mentalPoint: 0,
 	pysicalPoint: 0,
 	totalPoint: 0,

@@ -4,7 +4,7 @@ import { createSelector } from 'reselect';
 import { RootState } from './reducers';
 
 type CheerStatus = 'new' | 'canChange' | 'canUse' | 'used';
-type Cheer = {
+export type Cheer = {
 	id: number;
 	title: string;
 	point: number;
