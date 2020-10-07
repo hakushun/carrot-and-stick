@@ -1,272 +1,274 @@
 @use '../../stylesheets/mixin' as mixin;
 
-$pict-blue:#0D5FFA;
-$pict-orange:#EDA709;
-$pict-red:#F70606;
+$pict-blue:#0d5ffa;
+$pict-orange:#eda709;
+$pict-red:#f70606;
 
 .mission {
 	height: 100vh;
 	overflow-y: auto;
 
-  &__inner {
-    flex: 1 0 auto;
-    padding: 50px;
-    background-color: #f6f5f5;
-  }
+	&__inner {
+		background-color: #f6f5f5;
+		flex: 1 0 auto;
+		padding: 50px;
+	}
 
-  &__head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-  }
+	&__head {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+	}
 
-  &__title {
-      font-size: 2.8rem;
-  }
+	&__title {
+		font-size: 2.8rem;
+	}
 
-  &__button {
-      position: relative;
-      border-radius: 50%;
-      border: none;
-      outline: none;
-      width: 100px;
-      height: 100px;
-      line-height: 100px;
-      padding: 0;
-      background: #ee6f57;
-      // background-image: linear-gradient(45deg, #145374 0%, #ee6f57 100%);
-      box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
-      transition: .3s;
+	&__button {
+		background: #ee6f57;
+		border: none;
+		border-radius: 50%;
+		// background-image: linear-gradient(45deg, #145374 0%, #ee6f57 100%);
+		box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+		height: 100px;
+		line-height: 100px;
+		outline: none;
+		padding: 0;
+		position: relative;
+		transition: 0.3s;
+		width: 100px;
 
-      &:hover {
-          box-shadow: none;
-          transition: .3s;
-      }
+		&:hover {
+			box-shadow: none;
+			transition: 0.3s;
+		}
 
-      &:before {
-          display: block;
-          content: "";
-          position: absolute;
-          width: 30px;
-          height: 4px;
-          background: #fff;
-          top: 50%;
-          left: 34px;
-      }
+		&::before {
+			background: #fff;
+			content: "";
+			display: block;
+			height: 4px;
+			left: 34px;
+			position: absolute;
+			top: 50%;
+			width: 30px;
+		}
 
-      &:after {
-          display: block;
-          content: "";
-          position: absolute;
-          width: 4px;
-          height: 30px;
-          background: #fff;
-          top: 36px;
-          left: 47%;
-      }
-  }
+		&::after {
+			background: #fff;
+			content: "";
+			display: block;
+			height: 30px;
+			left: 47%;
+			position: absolute;
+			top: 36px;
+			width: 4px;
+		}
+	}
 }
 
 .wrapper {
 	display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+	justify-content: space-between;
+	margin-top: 20px;
 
-  &__inner {
-    width: 50%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%;
-  }
+	&__inner {
+		align-items: center;
+		display: flex;
+		height: 100%;
+		justify-content: space-around;
+		margin: 0 auto;
+		width: 50%;
+	}
 }
 
 .container {
-  width: 95%;
-  margin: 0 auto;
+	margin: 0 auto;
+	width: 95%;
 
-  &__inner {
-    height: 100%;
-  }
+	&__inner {
+		height: 100%;
+	}
 
-  &__head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
+	&__head {
+		align-items: flex-end;
+		display: flex;
+		justify-content: space-between;
+	}
 
-  &__title {
-    font-size: 2.4rem;
-  }
+	&__title {
+		font-size: 2.4rem;
+	}
 
 	&__selectWrapper {
 		position: relative;
+
 		&::before {
-			position: absolute;
-			top: 50%;
-			right: 5px;
-			width: 0;
-			height: 0;
-			padding: 0;
-			content: '';
 			border-left: 7px solid transparent;
 			border-right: 7px solid transparent;
 			border-top: 7px solid #333;
+			content: '';
+			height: 0;
+			padding: 0;
 			pointer-events: none;
+			position: absolute;
+			right: 5px;
+			top: 50%;
 			transform: translateY(-50%);
+			width: 0;
 		}
 	}
+
 	&__selectbox {
+		appearance: none;
 		border: 1px solid #333;
 		border-radius: 3px;
-		padding: 5px;
 		font-family: 'Noto Sans JP', 'Noto Sans', sans-serif;
-		appearance: none;
-
-
+		padding: 5px;
 	}
-  &__list {
+
+	&__list {
 		margin-top: 15px;
 		min-height: 300px;
-  }
+	}
 }
 
 .list {
+	border: solid 2px mixin.$lightColor;
+	box-shadow: 0 0 20px rgba(224, 85, 20, 0.5) inset;
 	height: 100%;
-  border: solid 2px mixin.$lightColor;
-  box-shadow: 0px 0px 20px rgba(224, 85, 20, 0.5) inset;
-  overflow-y: auto;
+	overflow-y: auto;
 
-  &::-webkit-scrollbar {
-    width: 16px;
-    // background: #1A1A2E;
-    background: mixin.$lightColor;
-    border: 2px solid mixin.$lightColor;
-  }
+	&::-webkit-scrollbar {
+		// background: #1A1A2E;
+		background: mixin.$lightColor;
+		border: 2px solid mixin.$lightColor;
+		width: 16px;
+	}
 
-  &::-webkit-scrollbar-thumb {
-    width: 10px;
-    border-radius: 10px;
-    border: 2px solid mixin.$lightColor;
-    border-right: none;
-    background: mixin.$bgColor;
-  }
+	&::-webkit-scrollbar-thumb {
+		background: mixin.$bgColor;
+		border: 2px solid mixin.$lightColor;
+		border-radius: 10px;
+		border-right: none;
+		width: 10px;
+	}
 
-  &__item {
-    width: 90%;
-    margin: 15px auto;
-    background: #f5f1da;
-    border: 1px solid #f5f1da;
-    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.16);
-  }
+	&__item {
+		background: #f5f1da;
+		border: 1px solid #f5f1da;
+		box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.16);
+		margin: 15px auto;
+		width: 90%;
+	}
 
-  &__itemLink {
-    color: inherit;
-  }
+	&__itemLink {
+		color: inherit;
+	}
 }
 
 .listItem {
-  &__inner {
-    padding:5px 10px;
-  }
+	&__inner {
+		padding: 5px 10px;
+	}
 }
 
 .pictBox {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+	align-items: baseline;
+	display: flex;
+	justify-content: space-between;
 
-  &__inner {
-    display: flex;
-    align-items: center;
-  }
+	&__inner {
+		align-items: center;
+		display: flex;
+	}
 }
 
 .pict {
-  display: inline-flex;
-  margin: 0 5px;
-  font-size: 1.2rem;
+	display: inline-flex;
+	font-size: 1.2rem;
+	margin: 0 5px;
 
-  &__img {
-    width: 20px;
-    height: 18px;
-  }
+	&__img {
+		height: 18px;
+		width: 20px;
+	}
 
-  &__text {
-    padding-left: 3px;
-  }
+	&__text {
+		padding-left: 3px;
+	}
 
-  &__textDate {
-    padding-top: 2px;
-  }
+	&__textDate {
+		padding-top: 2px;
+	}
 
-  &__textPoint {
-    font-size: 1.4rem;
-    font-weight: bold;
-  }
+	&__textPoint {
+		font-size: 1.4rem;
+		font-weight: bold;
+	}
 
-  &__pointValue {
-    font-size: 1.2rem;
-    font-weight: normal;
-  }
+	&__pointValue {
+		font-size: 1.2rem;
+		font-weight: normal;
+	}
 
+	&[data-pict="blue"] {
+		color: $pict-blue;
 
-  &[data-pict="blue"] {
-    color: $pict-blue;
-    .pict__img {
-      stroke: $pict-blue;
-      fill: $pict-blue;
-    }
-  }
+		.pict__img {
+			fill: $pict-blue;
+			stroke: $pict-blue;
+		}
+	}
 
-  &[data-pict="orange"] {
-    color: $pict-orange;
-    .pict__img {
-      stroke: $pict-orange;
-      fill: $pict-orange;
-    }
-  }
+	&[data-pict="orange"] {
+		color: $pict-orange;
 
-  &[data-pict="red"] {
-    color: $pict-red;
-    .pict__img {
-      stroke: $pict-red;
-      fill: $pict-red;
-    }
-  }
+		.pict__img {
+			fill: $pict-orange;
+			stroke: $pict-orange;
+		}
+	}
+
+	&[data-pict="red"] {
+		color: $pict-red;
+
+		.pict__img {
+			fill: $pict-red;
+			stroke: $pict-red;
+		}
+	}
 }
 
-
 .itemTitle {
-  margin-top: 10px;
-  font-size: 1.6rem;
+	font-size: 1.6rem;
+	margin-top: 10px;
 }
 
 .box {
-  position: relative;
-  margin: 50px auto 0;
-  width: 700px;
-  height: 350px;
+	height: 350px;
+	margin: 50px auto 0;
+	position: relative;
+	width: 700px;
 
-  &__top {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      height: 50%;
-      padding: 20px;
-      background: #32e0c4;
-      border-radius: 50% 50% 50% 70%/50% 50% 70% 60%;
-  }
+	&__top {
+		background: #32e0c4;
+		border-radius: 50% 50% 50% 70%/50% 50% 70% 60%;
+		height: 50%;
+		padding: 20px;
+		position: relative;
+		width: 100%;
+		z-index: 1;
+	}
 
-  &__body {
-      position: absolute;
-      bottom: 140px;
-      z-index: 0;
-      width: 100%;
-      height: 40%;
-      background: #0d7377;
-      border-radius: 0 0 50% 50% / 0 0 33.3% 33.3%;
-      border-radius: 0 0 50% 50% / 0 0 calc(2500% / 75) calc(2500% / 75);
-  }
+	&__body {
+		background: #0d7377;
+		border-radius: 0 0 50% 50% / 0 0 33.3% 33.3%;
+		border-radius: 0 0 50% 50% / 0 0 calc(2500% / 75) calc(2500% / 75);
+		bottom: 140px;
+		height: 40%;
+		position: absolute;
+		width: 100%;
+		z-index: 0;
+	}
 }

@@ -1,30 +1,30 @@
 @use '../../stylesheets/mixin' as mixin;
 
 .root {
-	display: flex;
 	background: #f6f5f5;
+	display: flex;
 }
 
 .menuDummy {
-	transition: all 0.2s ease-in-out;
-	height: 100%;
 	flex-shrink: 0;
+	height: 100%;
+	transition: all 0.2s ease-in-out;
 }
 
 .menu {
-	z-index: mixin.$z-menu;
-	padding: 30px;
-	height: 100vh;
-	min-height: 750px;
-	width: mixin.get_vw(300,1200);
-	max-width: 300px;
-	color: mixin.$bgColor;
 	background: mixin.$brandColor;
 	box-shadow: 0 0 15px rgba(20, 83, 116, 0.16);
+	color: mixin.$bgColor;
+	height: 100vh;
+	max-width: 300px;
+	min-height: 750px;
+	padding: 30px;
 	transition: all 0.3s ease-in-out;
-	@include mixin.mq('tablet'){
-		padding: mixin.get_vw(30, 1200);
+	width: mixin.get_vw(300, 1200);
+
+	@include mixin.mq('tablet') {
 		min-height: 580px;
+		padding: mixin.get_vw(30, 1200);
 	}
 
 	&__title {
@@ -33,24 +33,26 @@
 
 	&__titleText {
 		font-size: 3rem;
-		@include mixin.mq('tablet'){
-			font-size: mixin.get_vw(30,1200);
+
+		@include mixin.mq('tablet') {
+			font-size: mixin.get_vw(30, 1200);
 		}
 	}
 
 	&__titleIcon {
-		position: absolute;
-		top: 50%;
-		right: 0;
-		padding: 0;
-		transform: translateY(-50%);
 		background: transparent;
 		border: none;
 		cursor: pointer;
 		height: 51px;
 		outline: none;
-		@include mixin.mq('tablet'){
-			height: mixin.get_vw(51,1200);
+		padding: 0;
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+
+		@include mixin.mq('tablet') {
+			height: mixin.get_vw(51, 1200);
 		}
 	}
 
@@ -59,8 +61,9 @@
 		height: 2px;
 		position: relative;
 		width: 50px;
-		@include mixin.mq('tablet'){
-			width: mixin.get_vw(50,1200);
+
+		@include mixin.mq('tablet') {
+			width: mixin.get_vw(50, 1200);
 		}
 
 		&::before,
@@ -98,8 +101,9 @@
 				transform: rotate(0);
 				transition: all 0.7s;
 				width: 50px;
-				@include mixin.mq('tablet'){
-					width: mixin.get_vw(50,1200);
+
+				@include mixin.mq('tablet') {
+					width: mixin.get_vw(50, 1200);
 				}
 			}
 
@@ -113,8 +117,9 @@
 				transform: rotate(0);
 				transition: all 0.7s;
 				width: 50px;
-				@include mixin.mq('tablet'){
-					width: mixin.get_vw(50,1200);
+
+				@include mixin.mq('tablet') {
+					width: mixin.get_vw(50, 1200);
 				}
 			}
 		}
@@ -130,9 +135,10 @@
 		font-size: 1.8rem;
 		margin-top: 56px;
 		text-align: center;
-		@include mixin.mq('tablet'){
-			margin-top: 40px;
+
+		@include mixin.mq('tablet') {
 			font-size: 1.8rem;
+			margin-top: 40px;
 		}
 	}
 
@@ -143,8 +149,9 @@
 
 	&__pointNumber {
 		font-size: 5rem;
-		@include mixin.mq('tablet'){
-			font-size: 4.0rem;
+
+		@include mixin.mq('tablet') {
+			font-size: 4rem;
 		}
 	}
 
@@ -152,22 +159,23 @@
 		display: inline-block;
 		font-size: 1.6rem;
 		margin-left: 10px;
-		@include mixin.mq('tablet'){
+
+		@include mixin.mq('tablet') {
 			font-size: 1.4rem;
 		}
 	}
 
 	&__closePoint {
+		display: none;
+		left: 50%;
 		position: absolute;
 		top: 50%;
-		left: 50%;
-		transform: translate(-50%,-50%);
-		display: none;
+		transform: translate(-50%, -50%);
 	}
 
 	&[data-menu-open="false"] {
 		max-width: 100px;
-		width: mixin.get_vw(100,1200);
+		width: mixin.get_vw(100, 1200);
 
 		& .menu__titleText {
 			visibility: hidden;
@@ -177,6 +185,7 @@
 			left: 50%;
 			transform: translate(-50%, -50%);
 		}
+
 		& .menu__pointContainer {
 			display: block;
 		}
@@ -191,22 +200,24 @@
 			& .menu__pointNumber {
 				font-size: 20px;
 				position: relative;
-				@include mixin.mq('tablet'){
+
+				@include mixin.mq('tablet') {
 					font-size: mixin.get_vw(20, 1200);
 				}
 			}
 
 			& .menu__pointBlock {
 				margin-top: 30px;
-				@include mixin.mq('tablet'){
-					margin-top: mixin.get_vw(30,1200);
+
+				@include mixin.mq('tablet') {
+					margin-top: mixin.get_vw(30, 1200);
 				}
 			}
 
 			& .menu__point {
 				display: block;
-				position: relative;
 				margin-left: 0;
+				position: relative;
 			}
 		}
 	}
@@ -214,8 +225,9 @@
 
 .nav {
 	margin-top: 30px;
-	@include mixin.mq('tablet'){
-		margin-top: mixin.get_vw(50,1200);
+
+	@include mixin.mq('tablet') {
+		margin-top: mixin.get_vw(50, 1200);
 	}
 
 	&__listItemInner {
@@ -223,21 +235,23 @@
 		display: flex;
 		margin-top: 20px;
 		position: relative;
-		@include mixin.mq('tablet'){
-			margin-top: mixin.get_vw(20,1200);
+
+		@include mixin.mq('tablet') {
+			margin-top: mixin.get_vw(20, 1200);
 		}
 	}
 
 	&__listItemIcon {
 		cursor: pointer;
 		height: 30px;
-		width: 30px;
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
-		@include mixin.mq('tablet'){
-			height: mixin.get_vw(30,1200);
-			width: mixin.get_vw(30,1200);
+		width: 30px;
+
+		@include mixin.mq('tablet') {
+			height: mixin.get_vw(30, 1200);
+			width: mixin.get_vw(30, 1200);
 		}
 	}
 
@@ -252,17 +266,18 @@
 		margin-left: 48px;
 		white-space: nowrap;
 
-		@include mixin.mq('tablet'){
-			margin-left: mixin.get_vw(48, 1200);
+		@include mixin.mq('tablet') {
 			font-size: mixin.get_vw(20, 1200);
+			margin-left: mixin.get_vw(48, 1200);
 		}
 	}
 
 	&__sub {
 		bottom: 50px;
 		position: absolute;
-		@include mixin.mq('tablet'){
-			bottom: mixin.get_vw(50,1200);
+
+		@include mixin.mq('tablet') {
+			bottom: mixin.get_vw(50, 1200);
 		}
 	}
 

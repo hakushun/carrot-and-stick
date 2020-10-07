@@ -36,15 +36,17 @@ const Toppage: React.FC<Props> = React.memo(
 		showPassword,
 	}) => {
 		// windowの高さを取得
-		const windowHeight = () => {
+		const getWindowHeight = () => {
 			const windowHeight = window.innerHeight;
 			return windowHeight;
 		};
 
 		// windowの高さの半分の値をlistのheightに適用する
 		const setHeight = () => {
-			const target = document.querySelector('[data-js=mainVisual]') as HTMLDivElement;
-			const height = windowHeight().toString();
+			const target = document.querySelector(
+				'[data-js=mainVisual]',
+			) as HTMLDivElement;
+			const height = getWindowHeight().toString();
 			target.style.height = height + 'px';
 		};
 
@@ -56,7 +58,7 @@ const Toppage: React.FC<Props> = React.memo(
 			target.forEach((item) => {
 				item.dataset.slidein = 'true';
 			});
-		}
+		};
 
 		// 初回読み込み時とresize eventが走ったときに発火
 		useEffect(() => {
