@@ -2,7 +2,7 @@ import actionCreatorFactory from 'typescript-fsa';
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
 import { createSelector } from 'reselect';
 import { RootState } from './reducers';
-import { initialize } from './mission';
+import { editMission, initialize } from './mission';
 import { addMissionAcitons } from './missions';
 
 /**
@@ -19,6 +19,7 @@ const INITIAL_STATE = false;
 const reducer = reducerWithInitialState(INITIAL_STATE)
 	.case(toggle, (state) => !state)
 	.case(initialize, (state) => !state)
+	.case(editMission, (state) => !state)
 	.case(addMissionAcitons.done, (state) => !state);
 
 export default reducer;
