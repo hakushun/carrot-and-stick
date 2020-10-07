@@ -144,16 +144,13 @@ export const MissionForm: React.FC<Props> = React.memo(
 					{mission.id > 0 && (
 						<>
 							<button className={styles.form__button} type="button">
-								編集する
+								更新する
 							</button>
 							<button className={styles.form__button} type="button">
 								削除する
 							</button>
 						</>
 					)}
-					<button className={styles.form__button} type="button">
-						更新する
-					</button>
 				</div>
 			</form>
 		);
