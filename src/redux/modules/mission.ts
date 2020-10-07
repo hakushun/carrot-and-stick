@@ -2,8 +2,9 @@ import actionCreatorFactory from 'typescript-fsa';
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
 import { createSelector } from 'reselect';
 import { RootState } from './reducers';
+import { addMissionAcitons } from './missions';
 
-type MissionStatus = 'new' | 'progress' | 'complete';
+export type MissionStatus = 'new' | 'progress' | 'complete';
 export type Mission = {
 	id: number;
 	title: string;
@@ -28,6 +29,7 @@ type ChangePayload = {
  */
 const actionCreator = actionCreatorFactory();
 export const change = actionCreator<ChangePayload>('CHANGE_MISSION');
+export const initialize = actionCreator('INITIALAIZE_MISSION');
 
 const INITIAL_STATE: Mission = {
 	id: 0,
@@ -39,7 +41,6 @@ const INITIAL_STATE: Mission = {
 	memo: '',
 	status: 'new',
 	registarDate: 0,
-	usedDate: 0,
 	completeDate: 0,
 	heroInterview: '',
 };
@@ -47,13 +48,13 @@ const INITIAL_STATE: Mission = {
 /**
  * reducer
  */
-const reducer = reducerWithInitialState(INITIAL_STATE).case(
-	change,
-	(state, payload) => ({
+const reducer = reducerWithInitialState(INITIAL_STATE)
+	.case(change, (state, payload) => ({
 		...state,
 		[payload.name]: payload.value,
-	}),
-);
+	}))
+	.case(initialize, () => ({ ...INITIAL_STATE }))
+	.case(addMissionAcitons.done, () => ({ ...INITIAL_STATE }));
 
 export default reducer;
 
