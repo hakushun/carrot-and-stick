@@ -29,7 +29,7 @@ type ChangePayload = {
 const actionCreator = actionCreatorFactory();
 export const change = actionCreator<ChangePayload>('CHANGE_MISSION');
 
-const INITIAL_STATE = {
+const INITIAL_STATE: Mission = {
 	id: 0,
 	title: '',
 	dueDate: '',
@@ -40,6 +40,8 @@ const INITIAL_STATE = {
 	status: 'new',
 	registarDate: 0,
 	usedDate: 0,
+	completeDate: 0,
+	heroInterview: '',
 };
 
 /**
