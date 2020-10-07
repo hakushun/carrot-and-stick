@@ -1,35 +1,76 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectModal, toggle } from '../../../redux/modules/modal';
+import { initialize } from '../../../redux/modules/mission';
+import {
+	changeStatus,
+	selectMissions,
+	selectNewMissions,
+	selectProgressMissions,
+} from '../../../redux/modules/missions';
+import { selectModal } from '../../../redux/modules/modal';
 import { MissionForm } from '../MissionForm';
 import { Mission as Presentational } from './presentation';
 
 export const Mission: React.FC = React.memo(() => {
 	const dispatch = useDispatch();
 	const modal = useSelector(selectModal);
+	const missions = useSelector(selectMissions);
+	const newMissions = useSelector(selectNewMissions);
+	const progreeMissions = useSelector(selectProgressMissions);
+
 	const openForm = useCallback(
 		(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 			e.preventDefault();
-			dispatch(toggle());
+			dispatch(initialize());
+		},
+		[dispatch],
+	);
+
+	const handleChangeStatus = useCallback(
+		(mission, status) => {
+			dispatch(changeStatus({ mission, status }));
 		},
 		[dispatch],
 	);
 
 	const handleDragstart = useCallback((e: React.DragEvent<HTMLLIElement>) => {
-		// あとで要素にid振る
 		e.dataTransfer.setData('text/plain', (e.target as HTMLLIElement).id);
 	}, []);
 
-	const handleDragover = useCallback((e: React.DragEvent<HTMLUListElement>) => {
-		e.preventDefault();
-		e.dataTransfer.dropEffect = 'move';
-	}, []);
+	const handleDragover = useCallback(
+		(e: React.DragEvent<HTMLUListElement | HTMLDivElement>) => {
+			e.preventDefault();
+			e.dataTransfer.dropEffect = 'move';
+		},
+		[],
+	);
 
-	const handleDrop = useCallback((e: React.DragEvent<HTMLUListElement>) => {
-		e.preventDefault();
-		const data = e.dataTransfer.getData('text/plain');
-		console.log('D&D');
-	}, []);
+	const handleDrop = useCallback(
+		(e: React.DragEvent<HTMLUListElement | HTMLDivElement>) => {
+			e.preventDefault();
+			const data = e.dataTransfer.getData('text/plain');
+			const id = parseInt(data.split('_')[1], 10);
+			const targetMission = missions.find((mission) => mission.id === id)!;
+			const targetArea = (e.currentTarget as HTMLUListElement).id;
+
+			if (targetArea === 'new_mission_list' && targetMission.status !== 'new') {
+				handleChangeStatus(targetMission, 'new');
+			}
+			if (
+				targetArea === 'progress_mission_list' &&
+				targetMission.status !== 'progress'
+			) {
+				handleChangeStatus(targetMission, 'progress');
+			}
+			if (
+				targetArea === 'complete_mission_list' &&
+				targetMission.status !== 'complete'
+			) {
+				handleChangeStatus(targetMission, 'complete');
+			}
+		},
+		[missions],
+	);
 
 	// windowの高さの半分を取得
 	const calculateHeight = () => {
@@ -60,6 +101,8 @@ export const Mission: React.FC = React.memo(() => {
 		<>
 			{modal && <MissionForm />}
 			<Presentational
+				newMissions={newMissions}
+				progreeMissions={progreeMissions}
 				openForm={openForm}
 				handleDragstart={handleDragstart}
 				handleDragover={handleDragover}
