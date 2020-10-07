@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { initialize } from '../../../redux/modules/mission';
+import { editMission, initialize } from '../../../redux/modules/mission';
 import {
 	changeStatus,
 	selectMissions,
@@ -24,6 +24,15 @@ export const Mission: React.FC = React.memo(() => {
 			dispatch(initialize());
 		},
 		[dispatch],
+	);
+
+	const handleEdit = useCallback(
+		(id: number, e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+			e.preventDefault();
+			const target = missions.find((mission) => mission.id === id);
+			target && dispatch(editMission({ mission: target }));
+		},
+		[missions],
 	);
 
 	const handleChangeStatus = useCallback(
@@ -104,6 +113,7 @@ export const Mission: React.FC = React.memo(() => {
 				newMissions={newMissions}
 				progreeMissions={progreeMissions}
 				openForm={openForm}
+				handleEdit={handleEdit}
 				handleDragstart={handleDragstart}
 				handleDragover={handleDragover}
 				handleDrop={handleDrop}

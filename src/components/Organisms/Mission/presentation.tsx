@@ -7,6 +7,10 @@ type Props = {
 	newMissions: typeMission[];
 	progreeMissions: typeMission[];
 	openForm: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+	handleEdit: (
+		id: number,
+		e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+	) => void;
 	handleDragstart: (e: React.DragEvent<HTMLLIElement>) => void;
 	handleDragover: (
 		e: React.DragEvent<HTMLUListElement | HTMLDivElement>,
@@ -30,6 +34,7 @@ export const Mission: React.FC<Props> = React.memo(
 		newMissions,
 		progreeMissions,
 		openForm,
+		handleEdit,
 		handleDragstart,
 		handleDragover,
 		handleDrop,
@@ -83,7 +88,10 @@ export const Mission: React.FC<Props> = React.memo(
 															className={styles.list__item}
 															draggable="true"
 															onDragStart={(e) => handleDragstart(e)}>
-															<a href="#" className={styles.list__itemLink}>
+															<a
+																href="#"
+																className={styles.list__itemLink}
+																onClick={(e) => handleEdit(newMission.id, e)}>
 																<div className={styles.listItem}>
 																	<div className={styles.listItem__inner}>
 																		<div className={styles.pictBox}>
