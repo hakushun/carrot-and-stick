@@ -43,7 +43,7 @@ export const Mission: React.FC = React.memo(() => {
 	);
 
 	const handleDragstart = useCallback((e: React.DragEvent<HTMLLIElement>) => {
-		e.dataTransfer.setData('text/plain', (e.target as HTMLLIElement).id);
+		e.dataTransfer.setData('text/plain', (e.currentTarget as HTMLLIElement).id);
 	}, []);
 
 	const handleDragover = useCallback(

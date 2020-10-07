@@ -202,7 +202,12 @@ export const Mission: React.FC<Props> = React.memo(
 															className={styles.list__item}
 															draggable="true"
 															onDragStart={(e) => handleDragstart(e)}>
-															<a href="#" className={styles.list__itemLink}>
+															<a
+																href="#"
+																className={styles.list__itemLink}
+																onClick={(e) =>
+																	handleEdit(progreeMission.id, e)
+																}>
 																<div className={styles.listItem}>
 																	<div className={styles.listItem__inner}>
 																		<div className={styles.pictBox}>
