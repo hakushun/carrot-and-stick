@@ -38,6 +38,11 @@ export const updateMissionAcitons = actionCreator.async<
 	Mission,
 	Error
 >('UPDATE_MISSION');
+export const deleteMissionAcitons = actionCreator.async<
+	Mission,
+	Mission,
+	Error
+>('DELETE_MISSION');
 const addMission = (body: Mission): StepAction =>
 	steps(
 		addMissionAcitons.started(body),
@@ -55,6 +60,16 @@ export const updateMission = (body: Mission): StepAction =>
 			({ data }) =>
 				updateMissionAcitons.done({ params: body, result: data.data }),
 			({ error }) => updateMissionAcitons.failed({ params: body, error }),
+		],
+	);
+export const deleteMission = (body: Mission): StepAction =>
+	steps(
+		deleteMissionAcitons.started(body),
+		() => axios.post('/api/missions', { data: body }),
+		[
+			({ data }) =>
+				deleteMissionAcitons.done({ params: body, result: data.data }),
+			({ error }) => deleteMissionAcitons.failed({ params: body, error }),
 		],
 	);
 export const createMission = (mission: CreatePayload) => {
@@ -124,6 +139,24 @@ const reducer = reducerWithInitialState(INITIAL_STATE)
 		],
 	}))
 	.case(updateMissionAcitons.failed, (state, payload) => {
+		console.log(payload.error);
+		return {
+			...state,
+			isLoading: false,
+		};
+	})
+	.case(deleteMissionAcitons.started, (state) => ({
+		...state,
+		isLoading: true,
+	}))
+	.case(deleteMissionAcitons.done, (state, payload) => ({
+		...state,
+		isLoading: true,
+		missions: [
+			...state.missions.filter((mission) => mission.id !== payload.result.id),
+		],
+	}))
+	.case(deleteMissionAcitons.failed, (state, payload) => {
 		console.log(payload.error);
 		return {
 			...state,

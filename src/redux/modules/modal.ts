@@ -3,7 +3,11 @@ import { reducerWithInitialState } from 'typescript-fsa-reducers';
 import { createSelector } from 'reselect';
 import { RootState } from './reducers';
 import { editMission, initialize } from './mission';
-import { addMissionAcitons, updateMissionAcitons } from './missions';
+import {
+	addMissionAcitons,
+	deleteMissionAcitons,
+	updateMissionAcitons,
+} from './missions';
 
 /**
  * action
@@ -21,7 +25,8 @@ const reducer = reducerWithInitialState(INITIAL_STATE)
 	.case(initialize, (state) => !state)
 	.case(editMission, (state) => !state)
 	.case(addMissionAcitons.done, (state) => !state)
-	.case(updateMissionAcitons.done, (state) => !state);
+	.case(updateMissionAcitons.done, (state) => !state)
+	.case(deleteMissionAcitons.done, (state) => !state);
 
 export default reducer;
 
