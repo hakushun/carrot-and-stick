@@ -1,10 +1,11 @@
 import { Mission } from '../redux/modules/mission';
+import { Cheer } from '../redux/modules/cheer';
 
-export const generateId = (state: Mission[]): number => {
+export const generateId = (state: Mission[] | Cheer[]): number => {
 	let id = 1;
 	let max = 1;
 	if (state.length > 0) {
-		state.forEach((item) => {
+		state.forEach((item: Mission | Cheer) => {
 			if (max < item.id) {
 				max = item.id;
 			}
