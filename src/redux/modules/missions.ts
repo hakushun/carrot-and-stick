@@ -112,16 +112,35 @@ const reducer = reducerWithInitialState(INITIAL_STATE)
 			isLoading: false,
 		};
 	})
-	.case(changeStatus, (state, payload) => ({
-		...state,
-		missions: [
-			...state.missions.filter((mission) => mission.id !== payload.mission.id),
-			{
-				...payload.mission,
-				status: payload.status,
-			},
-		],
-	}))
+	.case(changeStatus, (state, payload) => {
+		if (payload.status === 'complete') {
+			return {
+				...state,
+				missions: [
+					...state.missions.filter(
+						(mission) => mission.id !== payload.mission.id,
+					),
+					{
+						...payload.mission,
+						status: payload.status,
+						completeDate: getTimestamp(),
+					},
+				],
+			};
+		}
+		return {
+			...state,
+			missions: [
+				...state.missions.filter(
+					(mission) => mission.id !== payload.mission.id,
+				),
+				{
+					...payload.mission,
+					status: payload.status,
+				},
+			],
+		};
+	})
 	.case(updateMissionAcitons.started, (state) => ({
 		...state,
 		isLoading: true,
