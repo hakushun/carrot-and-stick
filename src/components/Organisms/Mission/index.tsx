@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { editMission, initialize } from '../../../redux/modules/mission';
+import { editMission, initializeMission } from '../../../redux/modules/mission';
 import {
 	changeStatus,
 	selectMissions,
@@ -21,7 +21,7 @@ export const Mission: React.FC = React.memo(() => {
 	const openForm = useCallback(
 		(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 			e.preventDefault();
-			dispatch(initialize());
+			dispatch(initializeMission());
 		},
 		[dispatch],
 	);
