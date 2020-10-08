@@ -5,10 +5,11 @@ import mission from './mission';
 import cheer from './cheer';
 import modal from './modal';
 import missions from './missions';
+import cheers from './cheers';
 
 // 複数のreducerを一つにまとめる
 const rootReducer = combineReducers({
-	resources: combineReducers({ missions }),
+	resources: combineReducers({ missions, cheers }),
 	ui: combineReducers({ signIn, signUp, mission, cheer, modal }),
 });
 
