@@ -64,7 +64,7 @@ export const MissionForm: React.FC<Props> = React.memo(
 						<div className={styles.form__score}>
 							<div className={styles.form__scoreInner}>
 								<label
-									htmlFor="mission_mentalPoint"
+									htmlFor="mission_mentalDamage"
 									className={styles.form__label}>
 									<span
 										className={`${styles.form__labelTitle} ${styles.form__labelTitle_socore}`}>
@@ -73,9 +73,9 @@ export const MissionForm: React.FC<Props> = React.memo(
 									<input
 										className={styles.form__inputScore}
 										type="number"
-										id="mission_mentalPoint"
-										name="mentalPoint"
-										value={mission.mentalPoint}
+										id="mission_mentalDamage"
+										name="mentalDamage"
+										value={mission.mentalDamage}
 										required
 										aria-required
 										min={0}
@@ -86,7 +86,7 @@ export const MissionForm: React.FC<Props> = React.memo(
 							</div>
 							<div className={styles.form__scoreInner}>
 								<label
-									htmlFor="mission_pysicalPoint"
+									htmlFor="mission_pysicalDamage"
 									className={styles.form__label}>
 									<span
 										className={`${styles.form__labelTitle} ${styles.form__labelTitle_socore}`}>
@@ -95,9 +95,9 @@ export const MissionForm: React.FC<Props> = React.memo(
 									<input
 										className={styles.form__inputScore}
 										type="number"
-										id="mission_pysicalPoint"
-										name="pysicalPoint"
-										value={mission.pysicalPoint}
+										id="mission_pysicalDamage"
+										name="pysicalDamage"
+										value={mission.pysicalDamage}
 										required
 										aria-required
 										min={0}
@@ -108,18 +108,16 @@ export const MissionForm: React.FC<Props> = React.memo(
 							</div>
 						</div>
 						<div className={styles.form__point}>
-							<label
-								htmlFor="mission_totalPoint"
-								className={styles.form__label}>
+							<label htmlFor="mission_point" className={styles.form__label}>
 								<span className={styles.form__labelTitle}>
 									がんばるポイント
 								</span>
 								<input
 									className={styles.form__inputPoint}
 									type="number"
-									id="mission_totalPoint"
-									name="totalPoint"
-									value={mission.totalPoint}
+									id="mission_point"
+									name="point"
+									value={mission.point}
 									required
 									aria-required
 									min={0}

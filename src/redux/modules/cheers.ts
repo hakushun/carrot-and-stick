@@ -29,7 +29,7 @@ export const actionCreator = actionCreatorFactory();
 export const addCheerAcitons = actionCreator.async<Cheer, Cheer, Error>(
 	'ADD_CHEER',
 );
-export const changeStatus = actionCreator<ChangeStatus>('CHANGE_STATUS');
+export const changeStatus = actionCreator<ChangeStatus>('CHANGE_CHEER_STATUS');
 export const updateCheerAcitons = actionCreator.async<Cheer, Cheer, Error>(
 	'UPDATE_CHEER',
 );

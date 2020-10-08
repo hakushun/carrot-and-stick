@@ -15,9 +15,9 @@ interface Missions {
 type CreatePayload = {
 	title: string;
 	dueDate: string;
-	mentalPoint: number;
-	pysicalPoint: number;
-	totalPoint: number;
+	mentalDamage: number;
+	pysicalDamage: number;
+	point: number;
 	memo: string;
 };
 
@@ -32,7 +32,9 @@ export const actionCreator = actionCreatorFactory();
 export const addMissionAcitons = actionCreator.async<Mission, Mission, Error>(
 	'ADD_MISSION',
 );
-export const changeStatus = actionCreator<ChangeStatus>('CHANGE_STATUS');
+export const changeStatus = actionCreator<ChangeStatus>(
+	'CHANGE_MISSION_STATUS',
+);
 export const updateMissionAcitons = actionCreator.async<
 	Mission,
 	Mission,
