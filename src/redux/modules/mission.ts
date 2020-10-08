@@ -36,7 +36,7 @@ type EditPayload = {
  */
 const actionCreator = actionCreatorFactory();
 export const change = actionCreator<ChangePayload>('CHANGE_MISSION');
-export const initialize = actionCreator('INITIALAIZE_MISSION');
+export const initializeMission = actionCreator('INITIALAIZE_MISSION');
 export const editMission = actionCreator<EditPayload>('EDIT_MISSION');
 
 const INITIAL_STATE: Mission = {
@@ -61,7 +61,7 @@ const reducer = reducerWithInitialState(INITIAL_STATE)
 		...state,
 		[payload.name]: payload.value,
 	}))
-	.case(initialize, () => ({ ...INITIAL_STATE }))
+	.case(initializeMission, () => ({ ...INITIAL_STATE }))
 	.case(addMissionAcitons.done, () => ({ ...INITIAL_STATE }))
 	.case(editMission, (_state, payload) => ({ ...payload.mission }))
 	.case(updateMissionAcitons.done, () => ({ ...INITIAL_STATE }))
