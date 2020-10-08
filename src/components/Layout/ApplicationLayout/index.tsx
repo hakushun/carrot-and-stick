@@ -64,7 +64,7 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 				<nav id="nav" className={styles.nav} data-menu-open="true">
 					<ul className={styles.nav__list}>
 						<li className={styles.nav__listItem}>
-							<Link href="/">
+							<Link href="/mission">
 								<div className={styles.nav__listItemInner}>
 									<div
 										className={
@@ -80,7 +80,7 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 									</div>
 									<a
 										className={styles.nav__link + ' ' + styles.nav__link_active}
-										href="/">
+										href="/mission">
 										<span className={styles.nav__linkText}>がんばりスト</span>
 									</a>
 								</div>
@@ -100,17 +100,17 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 										alt=""
 									/>
 								</div>
-								<Link href="/">
+								<Link href="/cheer">
 									<a
 										className={styles.nav__link + ' ' + styles.nav__link_active}
-										href="/">
+										href="/cheer">
 										<span className={styles.nav__linkText}>ごほうびリスト</span>
 									</a>
 								</Link>
 							</div>
 						</li>
 						<li className={styles.nav__listItem}>
-							<Link href="/">
+							<Link href="/exchange">
 								<div className={styles.nav__listItemInner}>
 									<div
 										className={
@@ -126,14 +126,14 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 									</div>
 									<a
 										className={styles.nav__link + ' ' + styles.nav__link_active}
-										href="/">
+										href="/exchange">
 										<span className={styles.nav__linkText}>交換リスト</span>
 									</a>
 								</div>
 							</Link>
 						</li>
 						<li className={styles.nav__listItem}>
-							<Link href="/">
+							<Link href="/history">
 								<div className={styles.nav__listItemInner}>
 									<div
 										className={
@@ -149,14 +149,14 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 									</div>
 									<a
 										className={styles.nav__link + ' ' + styles.nav__link_active}
-										href="/">
+										href="/history">
 										<span className={styles.nav__linkText}>履歴</span>
 									</a>
 								</div>
 							</Link>
 						</li>
 						<li className={styles.nav__listItem}>
-							<Link href="/">
+							<Link href="/statictics">
 								<div className={styles.nav__listItemInner}>
 									<div
 										className={
@@ -172,14 +172,14 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 									</div>
 									<a
 										className={styles.nav__link + ' ' + styles.nav__link_active}
-										href="/">
+										href="/statictics">
 										<span className={styles.nav__linkText}>統計</span>
 									</a>
 								</div>
 							</Link>
 						</li>
 						<li className={styles.nav__listItem}>
-							<Link href="/">
+							<Link href="/help">
 								<div className={styles.nav__listItemInner}>
 									<div
 										className={
@@ -195,14 +195,14 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 									</div>
 									<a
 										className={styles.nav__link + ' ' + styles.nav__link_active}
-										href="/">
+										href="/help">
 										<span className={styles.nav__linkText}>使い方</span>
 									</a>
 								</div>
 							</Link>
 						</li>
 						<li className={styles.nav__listItem}>
-							<Link href="/">
+							<Link href="/contact">
 								<div className={styles.nav__listItemInner}>
 									<div
 										className={
@@ -218,7 +218,7 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 									</div>
 									<a
 										className={styles.nav__link + ' ' + styles.nav__link_active}
-										href="/">
+										href="/contact">
 										<span className={styles.nav__linkText}>お問い合わせ</span>
 									</a>
 								</div>
@@ -227,7 +227,7 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 					</ul>
 					<ul className={styles.nav__sub}>
 						<li className={styles.nav__listItem}>
-							<Link href="/">
+							<Link href="/mypage">
 								<div className={styles.nav__listItemInner}>
 									<div
 										className={
@@ -243,14 +243,14 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 									</div>
 									<a
 										className={styles.nav__link + ' ' + styles.nav__link_active}
-										href="/">
+										href="/mypage">
 										<span className={styles.nav__linkText}>マイページTOP</span>
 									</a>
 								</div>
 							</Link>
 						</li>
 						<li className={styles.nav__listItem}>
-							<Link href="/">
+							<Link href="/logout">
 								<div className={styles.nav__listItemInner}>
 									<div
 										className={
@@ -266,7 +266,7 @@ export const ApplicationLayout: React.FC = ({ children }) => {
 									</div>
 									<a
 										className={styles.nav__link + ' ' + styles.nav__link_active}
-										href="/">
+										href="/logout">
 										<span className={styles.nav__linkText}>ログアウト</span>
 									</a>
 								</div>
