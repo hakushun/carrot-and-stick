@@ -102,6 +102,7 @@ export const Mission: React.FC<Props> = React.memo(
 																					<img
 																						className={styles.pict__img}
 																						src="/images/ganbalist/alert.svg"
+																						alt=""
 																					/>
 																					<span
 																						className={`${styles.pict__text} ${styles.pict__textDate}`}>
@@ -114,10 +115,11 @@ export const Mission: React.FC<Props> = React.memo(
 																					<img
 																						className={styles.pict__img}
 																						src="/images/ganbalist/point.svg"
+																						alt=""
 																					/>
 																					<span
 																						className={`${styles.pict__text} ${styles.pict__textPoint}`}>
-																						{newMission.totalPoint}{' '}
+																						{newMission.point}{' '}
 																						<span
 																							className={
 																								styles.pict__pointValue
@@ -127,27 +129,31 @@ export const Mission: React.FC<Props> = React.memo(
 																						</span>
 																					</span>
 																				</div>
-																				<div
-																					className={styles.pict}
-																					data-pict="blue">
-																					<img
-																						className={styles.pict__img}
-																						src="/images/ganbalist/heart.svg"
-																					/>
-																					<span className={styles.pict__text}>
-																						{newMission.mentalPoint}
-																					</span>
-																				</div>
-																				<div
-																					className={styles.pict}
-																					data-pict="orange">
-																					<img
-																						className={styles.pict__img}
-																						src="/images/ganbalist/muscle.svg"
-																					/>
-																					<span className={styles.pict__text}>
-																						{newMission.pysicalPoint}
-																					</span>
+																				<div className={styles.itemPict__inner}>
+																					<div
+																						className={styles.pict}
+																						data-pict="blue">
+																						<img
+																							className={styles.pict__img}
+																							src="/images/ganbalist/heart.svg"
+																							alt=""
+																						/>
+																						<span className={styles.pict__text}>
+																							{newMission.mentalDamage}
+																						</span>
+																					</div>
+																					<div
+																						className={styles.pict}
+																						data-pict="orange">
+																						<img
+																							className={styles.pict__img}
+																							src="/images/ganbalist/muscle.svg"
+																							alt=""
+																						/>
+																						<span className={styles.pict__text}>
+																							{newMission.pysicalDamage}
+																						</span>
+																					</div>
 																				</div>
 																			</div>
 																		</div>
@@ -212,27 +218,64 @@ export const Mission: React.FC<Props> = React.memo(
 																	<div className={styles.listItem__inner}>
 																		<div className={styles.pictBox}>
 																			<div className={styles.pictBox__inner}>
-																				<div className={styles.pict}>
-																					<img src="/images/ganbalist/alert.svg" />
-																					<span>{progreeMission.dueDate}</span>
-																				</div>
-																				<div className={styles.pict}>
-																					{progreeMission.totalPoint}
-																					<span>pt</span>
+																				<div
+																					className={styles.pict}
+																					data-pict="red">
+																					<img
+																						className={styles.pict__img}
+																						src="/images/ganbalist/alert.svg"
+																						alt=""
+																					/>
+																					<span
+																						className={`${styles.pict__text} ${styles.pict__textDate}`}>
+																						{progreeMission.dueDate}
+																					</span>
 																				</div>
 																			</div>
-																			<div className={styles.itemPict__inner}>
+																			<div className={styles.pictBox__inner}>
 																				<div className={styles.pict}>
-																					<img src="/images/ganbalist/heart.svg" />
-																					<span>
-																						{progreeMission.mentalPoint}
+																					<img
+																						className={styles.pict__img}
+																						src="/images/ganbalist/point.svg"
+																						alt=""
+																					/>
+																					<span
+																						className={`${styles.pict__text} ${styles.pict__textPoint}`}>
+																						{progreeMission.point}{' '}
+																						<span
+																							className={
+																								styles.pict__pointValue
+																							}>
+																							{' '}
+																							pt
+																						</span>
 																					</span>
 																				</div>
-																				<div className={styles.pict}>
-																					<img src="/images/ganbalist/muscle.svg" />
-																					<span>
-																						{progreeMission.pysicalPoint}
-																					</span>
+																				<div className={styles.itemPict__inner}>
+																					<div
+																						className={styles.pict}
+																						data-pict="blue">
+																						<img
+																							className={styles.pict__img}
+																							src="/images/ganbalist/heart.svg"
+																							alt=""
+																						/>
+																						<span className={styles.pict__text}>
+																							{progreeMission.mentalDamage}
+																						</span>
+																					</div>
+																					<div
+																						className={styles.pict}
+																						data-pict="orange">
+																						<img
+																							className={styles.pict__img}
+																							src="/images/ganbalist/muscle.svg"
+																							alt=""
+																						/>
+																						<span className={styles.pict__text}>
+																							{progreeMission.pysicalDamage}
+																						</span>
+																					</div>
 																				</div>
 																			</div>
 																		</div>
