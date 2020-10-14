@@ -7,6 +7,7 @@ import axios from 'axios';
 import { RootState } from './reducers';
 import { generateId, getTimestamp } from '../../libs/utility';
 import { Mission, MissionStatus } from './mission';
+import { SortKey } from './sortKey';
 
 interface Missions {
 	missions: Mission[];
@@ -14,7 +15,7 @@ interface Missions {
 }
 type CreatePayload = {
 	title: string;
-	dueDate: string;
+	dueDate: number;
 	mentalDamage: number;
 	physicalDamage: number;
 	point: number;
@@ -195,12 +196,34 @@ export const selectMissions = createSelector(
 	(missions) => missions,
 );
 export const selectNewMissions = createSelector(
-	[(state: RootState) => state.resources.missions.missions],
-	(missions) => missions.filter((mission) => mission.status === 'new'),
+	[
+		(state: RootState) => state.resources.missions.missions,
+		(state: RootState) => state.ui.sortKey.newMissions,
+	],
+	(missions, sortKey) => {
+		const key = sortKey.split('-')[0] as SortKey;
+		const dir = sortKey.split('-')[1];
+		const sortedMissions = missions.sort((a, b) => {
+			if (dir === 'up') return a[key] - b[key];
+			if (dir === 'down') return b[key] - a[key];
+		});
+		return sortedMissions.filter((mission) => mission.status === 'new');
+	},
 );
 export const selectProgressMissions = createSelector(
-	[(state: RootState) => state.resources.missions.missions],
-	(missions) => missions.filter((mission) => mission.status === 'progress'),
+	[
+		(state: RootState) => state.resources.missions.missions,
+		(state: RootState) => state.ui.sortKey.progressMissions,
+	],
+	(missions, sortKey) => {
+		const key = sortKey.split('-')[0] as SortKey;
+		const dir = sortKey.split('-')[1];
+		const sortedMissions = missions.sort((a, b) => {
+			if (dir === 'up') return a[key] - b[key];
+			if (dir === 'down') return b[key] - a[key];
+		});
+		return sortedMissions.filter((mission) => mission.status === 'progress');
+	},
 );
 export const selectCompleteMissions = createSelector(
 	[(state: RootState) => state.resources.missions.missions],
