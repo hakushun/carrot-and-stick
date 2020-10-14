@@ -2,6 +2,7 @@ import React from 'react';
 import { ApplicationLayout } from '../../Layout/ApplicationLayout';
 import styles from './index.module.scss';
 import { Mission as typeMission } from '../../../redux/modules/mission';
+import { getStringTimestamp } from '../../../libs/utility';
 
 type Props = {
 	newMissions: typeMission[];
@@ -111,7 +112,9 @@ export const Mission: React.FC<Props> = React.memo(
 																					/>
 																					<span
 																						className={`${styles.pict__text} ${styles.pict__textDate}`}>
-																						{newMission.dueDate}
+																						{getStringTimestamp(
+																							newMission.dueDate,
+																						)}
 																					</span>
 																				</div>
 																			</div>
@@ -236,7 +239,9 @@ export const Mission: React.FC<Props> = React.memo(
 																					/>
 																					<span
 																						className={`${styles.pict__text} ${styles.pict__textDate}`}>
-																						{progreeMission.dueDate}
+																						{getStringTimestamp(
+																							progreeMission.dueDate,
+																						)}
 																					</span>
 																				</div>
 																			</div>

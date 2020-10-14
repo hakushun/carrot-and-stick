@@ -22,8 +22,8 @@ export const getStringTimestamp = (ms: number): string => {
 	const y = dt.getFullYear();
 	const m = ('00' + (dt.getMonth() + 1)).slice(-2);
 	const d = ('00' + dt.getDate()).slice(-2);
-	const hour = ('00' + dt.getHours()).slice(-2);
-	const min = ('00' + dt.getMinutes()).slice(-2);
-	const sec = ('00' + dt.getSeconds()).slice(-2);
-	return `${y}-${m}-${d} ${hour}:${min}:${sec}`;
+	// const hour = ('00' + dt.getHours()).slice(-2);
+	// const min = ('00' + dt.getMinutes()).slice(-2);
+	// const sec = ('00' + dt.getSeconds()).slice(-2);
+	return `${y}-${m}-${d}`;
 };
