@@ -86,7 +86,7 @@ export const MissionForm: React.FC<Props> = React.memo(
 							</div>
 							<div className={styles.form__scoreInner}>
 								<label
-									htmlFor="mission_pysicalDamage"
+									htmlFor="mission_physicalDamage"
 									className={styles.form__label}>
 									<span
 										className={`${styles.form__labelTitle} ${styles.form__labelTitle_socore}`}>
@@ -95,9 +95,9 @@ export const MissionForm: React.FC<Props> = React.memo(
 									<input
 										className={styles.form__inputScore}
 										type="number"
-										id="mission_pysicalDamage"
-										name="pysicalDamage"
-										value={mission.pysicalDamage}
+										id="mission_physicalDamage"
+										name="physicalDamage"
+										value={mission.physicalDamage}
 										required
 										aria-required
 										min={0}

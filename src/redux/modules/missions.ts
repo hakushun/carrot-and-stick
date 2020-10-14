@@ -16,7 +16,7 @@ type CreatePayload = {
 	title: string;
 	dueDate: string;
 	mentalDamage: number;
-	pysicalDamage: number;
+	physicalDamage: number;
 	point: number;
 	memo: string;
 };

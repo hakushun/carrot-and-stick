@@ -28,7 +28,7 @@ export const MissionForm: React.FC = React.memo(() => {
 					title: mission.title,
 					dueDate: mission.dueDate,
 					mentalDamage: mission.mentalDamage,
-					pysicalDamage: mission.pysicalDamage,
+					physicalDamage: mission.physicalDamage,
 					point: mission.point,
 					memo: mission.memo,
 				}),

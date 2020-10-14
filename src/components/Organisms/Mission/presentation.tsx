@@ -151,7 +151,7 @@ export const Mission: React.FC<Props> = React.memo(
 																							alt=""
 																						/>
 																						<span className={styles.pict__text}>
-																							{newMission.pysicalDamage}
+																							{newMission.physicalDamage}
 																						</span>
 																					</div>
 																				</div>
@@ -273,7 +273,7 @@ export const Mission: React.FC<Props> = React.memo(
 																							alt=""
 																						/>
 																						<span className={styles.pict__text}>
-																							{progreeMission.pysicalDamage}
+																							{progreeMission.physicalDamage}
 																						</span>
 																					</div>
 																				</div>

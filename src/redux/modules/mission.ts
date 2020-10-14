@@ -14,7 +14,7 @@ export type Mission = {
 	title: string;
 	dueDate: string;
 	mentalDamage: number;
-	pysicalDamage: number;
+	physicalDamage: number;
 	point: number;
 	memo: string;
 	status: MissionStatus;
@@ -44,7 +44,7 @@ const INITIAL_STATE: Mission = {
 	title: '',
 	dueDate: '',
 	mentalDamage: 0,
-	pysicalDamage: 0,
+	physicalDamage: 0,
 	point: 0,
 	memo: '',
 	status: 'new',
