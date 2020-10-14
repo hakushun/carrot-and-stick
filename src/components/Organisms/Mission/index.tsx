@@ -8,6 +8,7 @@ import {
 	selectProgressMissions,
 } from '../../../redux/modules/missions';
 import { selectModal } from '../../../redux/modules/modal';
+import { changeKey } from '../../../redux/modules/sortKey';
 import { MissionForm } from '../MissionForm';
 import { Mission as Presentational } from './presentation';
 
@@ -42,6 +43,12 @@ export const Mission: React.FC = React.memo(() => {
 		[dispatch],
 	);
 
+	const handleChangeSorkKey = useCallback(
+		(e: React.ChangeEvent<HTMLSelectElement>) => {
+			dispatch(changeKey({ name: e.target.name, value: e.target.value }));
+		},
+		[dispatch],
+	);
 	const handleDragstart = useCallback((e: React.DragEvent<HTMLLIElement>) => {
 		e.dataTransfer.setData('text/plain', (e.currentTarget as HTMLLIElement).id);
 	}, []);
@@ -114,6 +121,7 @@ export const Mission: React.FC = React.memo(() => {
 				progreeMissions={progreeMissions}
 				openForm={openForm}
 				handleEdit={handleEdit}
+				handleChangeSorkKey={handleChangeSorkKey}
 				handleDragstart={handleDragstart}
 				handleDragover={handleDragover}
 				handleDrop={handleDrop}

@@ -11,6 +11,7 @@ type Props = {
 		id: number,
 		e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
 	) => void;
+	handleChangeSorkKey: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 	handleDragstart: (e: React.DragEvent<HTMLLIElement>) => void;
 	handleDragover: (
 		e: React.DragEvent<HTMLUListElement | HTMLDivElement>,
@@ -18,14 +19,14 @@ type Props = {
 	handleDrop: (e: React.DragEvent<HTMLUListElement | HTMLDivElement>) => void;
 };
 const selectOptionList = [
-	{ id: 1, name: '期限が近い順' },
-	{ id: 2, name: '期限が遅い順' },
-	{ id: 3, name: 'ポイントが多い順' },
-	{ id: 4, name: 'ポイントが少ない順' },
-	{ id: 5, name: '精神的につらい順' },
-	{ id: 6, name: '精神的に楽な順' },
-	{ id: 7, name: '体力的につらい順' },
-	{ id: 8, name: '体力的に楽な順' },
+	{ id: 1, key: 'dueDate-up', name: '期限が近い順' },
+	{ id: 2, key: 'dueDate-down', name: '期限が遅い順' },
+	{ id: 3, key: 'point-down', name: 'ポイントが多い順' },
+	{ id: 4, key: 'point-up', name: 'ポイントが少ない順' },
+	{ id: 5, key: 'mentalDamage-down', name: '精神的につらい順' },
+	{ id: 6, key: 'mentalDamage-up', name: '精神的に楽な順' },
+	{ id: 7, key: 'physicalDamage-down', name: '体力的につらい順' },
+	{ id: 8, key: 'physicalDamage-up', name: '体力的に楽な順' },
 ];
 
 // http://localhost:3000/mission
@@ -35,6 +36,7 @@ export const Mission: React.FC<Props> = React.memo(
 		progreeMissions,
 		openForm,
 		handleEdit,
+		handleChangeSorkKey,
 		handleDragstart,
 		handleDragover,
 		handleDrop,
@@ -61,10 +63,13 @@ export const Mission: React.FC<Props> = React.memo(
 												これからがんばる
 											</h3>
 											<div className={styles.container__selectWrapper}>
-												<select className={styles.container__selectbox}>
+												<select
+													className={styles.container__selectbox}
+													name="newMissions"
+													onChange={handleChangeSorkKey}>
 													{selectOptionList.map((opt) => {
 														return (
-															<option key={opt.id} value={opt.id}>
+															<option key={opt.id} value={opt.key}>
 																{opt.name}
 															</option>
 														);
@@ -181,10 +186,13 @@ export const Mission: React.FC<Props> = React.memo(
 												今がんばってる
 											</h3>
 											<div className={styles.container__selectWrapper}>
-												<select className={styles.container__selectbox}>
+												<select
+													className={styles.container__selectbox}
+													name="progressMissions"
+													onChange={handleChangeSorkKey}>
 													{selectOptionList.map((opt) => {
 														return (
-															<option key={opt.id} value={opt.id}>
+															<option key={opt.id} value={opt.key}>
 																{opt.name}
 															</option>
 														);
