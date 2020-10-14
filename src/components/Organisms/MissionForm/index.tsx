@@ -26,7 +26,7 @@ export const MissionForm: React.FC = React.memo(() => {
 			dispatch(
 				createMission({
 					title: mission.title,
-					dueDate: mission.dueDate,
+					dueDate: new Date(mission.dueDate).getTime(),
 					mentalDamage: mission.mentalDamage,
 					physicalDamage: mission.physicalDamage,
 					point: mission.point,

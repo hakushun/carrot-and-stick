@@ -12,7 +12,7 @@ export type MissionStatus = 'new' | 'progress' | 'complete';
 export type Mission = {
 	id: number;
 	title: string;
-	dueDate: string;
+	dueDate: number;
 	mentalDamage: number;
 	physicalDamage: number;
 	point: number;
@@ -42,7 +42,7 @@ export const editMission = actionCreator<EditPayload>('EDIT_MISSION');
 const INITIAL_STATE: Mission = {
 	id: 0,
 	title: '',
-	dueDate: '',
+	dueDate: 0,
 	mentalDamage: 0,
 	physicalDamage: 0,
 	point: 0,
