@@ -42,7 +42,7 @@ export const editMission = actionCreator<EditPayload>('EDIT_MISSION');
 const INITIAL_STATE: Mission = {
 	id: 0,
 	title: '',
-	dueDate: 0,
+	dueDate: new Date().getTime(),
 	mentalDamage: 0,
 	physicalDamage: 0,
 	point: 0,

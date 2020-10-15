@@ -1,6 +1,7 @@
 import React from 'react';
 import { Mission } from '../../../redux/modules/mission';
 import styles from './index.module.scss';
+import { getStringTimestamp } from '../../../libs/utility';
 
 type Props = {
 	mission: Mission;
@@ -53,7 +54,7 @@ export const MissionForm: React.FC<Props> = React.memo(
 									type="date"
 									id="mission_dueDate"
 									name="dueDate"
-									value={mission.dueDate}
+									value={getStringTimestamp(mission.dueDate)}
 									required
 									aria-required
 									onChange={handleChange}
