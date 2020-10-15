@@ -29,19 +29,21 @@ export const CheerForm: React.FC<Props> = React.memo(
 					</label>
 					<div className={styles.cheer__flex}>
 						<label htmlFor="cheer_point" className={styles.cheer__label}>
-							<span className={styles.cheer__labelTitle}>必要ポイント</span>
-							<input
-								id="cheer_point"
-								className={styles.cheer__inputPoint}
-								type="number"
-								name="point"
-								required
-								aria-required
-								min={0}
-								max={100}
-								value={cheer.point}
-								onChange={handleChange}
-							/>
+							<div className={styles.cheer__labelBox}>
+								<span className={styles.cheer__labelTitle}>必要ポイント</span>
+								<input
+									id="cheer_point"
+									className={styles.cheer__inputPoint}
+									type="number"
+									name="point"
+									required
+									aria-required
+									min={0}
+									max={1000}
+									value={cheer.point}
+									onChange={handleChange}
+								/>
+							</div>
 						</label>
 						<label htmlFor="cheer_memo" className={styles.cheer__label}>
 							<span className={styles.cheer__labelTitle}>メモ</span>
