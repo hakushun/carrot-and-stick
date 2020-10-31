@@ -7,10 +7,25 @@ type Props = {
 	handleChange: (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
 	) => void;
+	handleCreateCheer: (
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+	) => void;
+	handleUpdateCheer: (
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+	) => void;
+	handleDeleteCheer: (
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+	) => void;
 };
 
 export const CheerForm: React.FC<Props> = React.memo(
-	({ cheer, handleChange }) => {
+	({
+		cheer,
+		handleChange,
+		handleCreateCheer,
+		handleUpdateCheer,
+		handleDeleteCheer,
+	}) => {
 		return (
 			<form className={styles.cheer}>
 				<div className={styles.cheer__inner}>
@@ -63,18 +78,30 @@ export const CheerForm: React.FC<Props> = React.memo(
 					</div>
 				</div>
 				<div className={styles.cheer__buttonWrapper}>
-					<button className={styles.cheer__button} type="button">
-						追加する
-					</button>
-					<button className={styles.cheer__button} type="button">
-						編集する
-					</button>
-					<button className={styles.cheer__button} type="button">
-						更新する
-					</button>
-					<button className={styles.cheer__button} type="button">
-						削除する
-					</button>
+					{cheer.id === 0 && (
+						<button
+							className={styles.cheer__button}
+							type="button"
+							onClick={handleCreateCheer}>
+							追加する
+						</button>
+					)}
+					{cheer.id > 0 && (
+						<>
+							<button
+								className={styles.cheer__button}
+								type="button"
+								onClick={handleUpdateCheer}>
+								更新する
+							</button>
+							<button
+								className={styles.cheer__button}
+								type="button"
+								onClick={handleDeleteCheer}>
+								削除する
+							</button>
+						</>
+					)}
 				</div>
 			</form>
 		);
