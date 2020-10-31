@@ -4,6 +4,7 @@ import { createSelector } from 'reselect';
 import { RootState } from './reducers';
 
 export type SortKey = 'dueDate' | 'mentalDamage' | 'physicalDamage' | 'point';
+export type CheersSortKey = 'point' | 'registerDate';
 
 type ChangePayload = {
 	name: string;
@@ -19,6 +20,8 @@ export const changeKey = actionCreator<ChangePayload>('CHANGE_SORD_KEY');
 const INITIAL_STATE = {
 	newMissions: 'dueDate-up',
 	progressMissions: 'dueDate-up',
+	cheers: 'registerDate-up',
+	cheersRadio: 'all',
 };
 
 /**
@@ -40,4 +43,9 @@ export default reducer;
 export const selectSortKey = createSelector(
 	[(state: RootState) => state.ui.sortKey],
 	(sortKey) => sortKey,
+);
+
+export const selectCheersRadio = createSelector(
+	[(state: RootState) => state.ui.sortKey.cheersRadio],
+	(cheersRadio) => cheersRadio,
 );

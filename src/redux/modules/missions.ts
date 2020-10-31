@@ -221,6 +221,7 @@ export const selectProgressMissions = createSelector(
 		const sortedMissions = missions.sort((a, b) => {
 			if (dir === 'up') return a[key] - b[key];
 			if (dir === 'down') return b[key] - a[key];
+			return 0;
 		});
 		return sortedMissions.filter((mission) => mission.status === 'progress');
 	},

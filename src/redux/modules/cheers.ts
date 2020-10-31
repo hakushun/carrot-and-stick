@@ -7,6 +7,7 @@ import axios from 'axios';
 import { RootState } from './reducers';
 import { generateId, getTimestamp } from '../../libs/utility';
 import { Cheer, CheerStatus } from './cheer';
+import { CheersSortKey } from './sortKey';
 
 interface Cheers {
 	cheers: Cheer[];
@@ -68,12 +69,12 @@ export const deleteCheer = (body: Cheer): StepAction =>
 export const createCheer = (cheer: CreatePayload) => {
 	return (dispatch: Dispatch<any>, getState: () => RootState): void => {
 		const id = generateId(getState().resources.cheers.cheers);
-		const registarDate = getTimestamp();
+		const registerDate = getTimestamp();
 		dispatch(
 			addCheer({
 				...cheer,
 				id,
-				registarDate,
+				registerDate,
 				status: 'new',
 				usedDate: 0,
 			}),
@@ -162,8 +163,26 @@ export default reducer;
  * selector
  */
 export const selectCheers = createSelector(
-	[(state: RootState) => state.resources.cheers.cheers],
-	(cheers) => cheers,
+	[
+		(state: RootState) => state.resources.cheers.cheers,
+		(state: RootState) => state.ui.sortKey.cheers,
+		(state: RootState) => state.ui.sortKey.cheersRadio,
+	],
+	(cheers, sortKey, cheersRadio) => {
+		const key = sortKey.split('-')[0] as CheersSortKey;
+		const dir = sortKey.split('-')[1];
+		const sortedCheers = cheers.sort((a, b) => {
+			if (dir === 'up') return a[key] - b[key];
+			if (dir === 'down') return b[key] - a[key];
+			return 0;
+		});
+		return sortedCheers.filter((cheer) => {
+			if (cheersRadio === 'canChange') {
+				return cheer.status === 'canChange';
+			}
+			return true;
+		});
+	},
 );
 export const selectNewCheers = createSelector(
 	[(state: RootState) => state.resources.cheers.cheers],

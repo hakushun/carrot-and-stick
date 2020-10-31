@@ -15,7 +15,7 @@ export type Cheer = {
 	point: number;
 	memo: string;
 	status: CheerStatus;
-	registarDate: number;
+	registerDate: number;
 	usedDate: number;
 };
 
@@ -41,7 +41,7 @@ const INITIAL_STATE: Cheer = {
 	point: 0,
 	memo: '',
 	status: 'new',
-	registarDate: 0,
+	registerDate: 0,
 	usedDate: 0,
 };
 
